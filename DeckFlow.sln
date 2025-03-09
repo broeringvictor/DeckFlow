@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeckFlow.Domain", "src\DeckFlow.Domain\DeckFlow.Domain.csproj", "{1C604E57-A102-4B57-9D99-FCD7E412EBB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeckFlow.Api", "src\DeckFlow.Api\DeckFlow.Api.csproj", "{32F63931-BD9B-467C-9221-1115C46FFB7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C604E57-A102-4B57-9D99-FCD7E412EBB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C604E57-A102-4B57-9D99-FCD7E412EBB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C604E57-A102-4B57-9D99-FCD7E412EBB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C604E57-A102-4B57-9D99-FCD7E412EBB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32F63931-BD9B-467C-9221-1115C46FFB7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32F63931-BD9B-467C-9221-1115C46FFB7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32F63931-BD9B-467C-9221-1115C46FFB7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32F63931-BD9B-467C-9221-1115C46FFB7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
