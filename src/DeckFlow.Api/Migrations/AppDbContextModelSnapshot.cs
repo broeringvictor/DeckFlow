@@ -34,7 +34,7 @@ namespace DeckFlow.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ApiKeyConfiguration");
+                    b.ToTable("ApiKeysConfiguration");
                 });
 
             modelBuilder.Entity("DeckFlow.Domain.Entities.FlashCard", b =>

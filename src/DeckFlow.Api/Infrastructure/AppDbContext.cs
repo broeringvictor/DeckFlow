@@ -14,10 +14,12 @@ public class AppDbContext : DbContext
     public DbSet<Category> Categories { get; set; } = null!;
     public DbSet<FlashCard> FlashCards { get; set; } = null!;
 
+    public DbSet<ApiKeyConfiguration> ApiKeysConfiguration { get; set; } = null!;
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 
-public DbSet<DeckFlow.Domain.Entities.ApiKeyConfiguration> ApiKeyConfiguration { get; set; } = default!;
+
 }
