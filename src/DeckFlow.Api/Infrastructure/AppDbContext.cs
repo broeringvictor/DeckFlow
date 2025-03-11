@@ -1,6 +1,5 @@
 using System.Reflection;
 using DeckFlow.Domain.Entities;
-using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DeckFlow.Api.Infrastructure;
@@ -19,6 +18,9 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        modelBuilder.Entity<FlashCard>()
+            .Property(fc => fc.Rating)
+            .HasDefaultValue(1);
     }
 
 

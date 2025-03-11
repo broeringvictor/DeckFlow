@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Domain.Entities;
 
 namespace DeckFlow.Domain.Entities;
 
@@ -20,6 +19,8 @@ public class FlashCard
 
     public DateTime CreateDate { get; set; } = DateTime.Now;
     public DateTime LastUpdateDate { get; set; } = DateTime.Now;
+
+    public int Rating { get; set; }
 
 
     public long CategoryId { get; set; }
