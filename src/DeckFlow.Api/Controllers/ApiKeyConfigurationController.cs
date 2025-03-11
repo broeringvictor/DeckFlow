@@ -22,14 +22,14 @@ namespace DeckFlow.Api.Controllers
         public async Task<ActionResult<object>> GetApiKeyConfiguration()
         {
             // Busca a chave OpenAI mais recente, se existir
-            var openAiKey = await _context.ApiKeyConfiguration
+            var openAiKey = await _context.ApiKeysConfiguration
                 .Where(x => !string.IsNullOrEmpty(x.OpenAiApiKey))
                 .OrderByDescending(x => x.LastUpdated)
                 .Select(x => new { x.OpenAiApiKey, x.LastUpdated })
                 .FirstOrDefaultAsync();
 
             // Busca a chave Deepseek mais recente, se existir
-            var deepseekKey = await _context.ApiKeyConfiguration
+            var deepseekKey = await _context.ApiKeysConfiguration
                 .Where(x => !string.IsNullOrEmpty(x.DeepseekApiKey))
                 .OrderByDescending(x => x.LastUpdated)
                 .Select(x => new { x.DeepseekApiKey, x.LastUpdated })
@@ -58,13 +58,13 @@ namespace DeckFlow.Api.Controllers
             if (dto.Provider.ToLower() != "openai" && dto.Provider.ToLower() != "deepseek")
                 return BadRequest("O provedor deve ser 'OpenAI' ou 'Deepseek'.");
 
-            var config = await _context.ApiKeyConfiguration.FirstOrDefaultAsync();
+            var config = await _context.ApiKeysConfiguration.FirstOrDefaultAsync();
 
             if (config == null)
             {
                 // Criando novo registro caso não exista
                 config = new ApiKeyConfiguration();
-                _context.ApiKeyConfiguration.Add(config);
+                _context.ApiKeysConfiguration.Add(config);
             }
 
             // Atualizando a chave correta
@@ -86,7 +86,7 @@ namespace DeckFlow.Api.Controllers
             if (dto.Provider.ToLower() != "openai" && dto.Provider.ToLower() != "deepseek")
                 return BadRequest("O provedor deve ser 'OpenAI' ou 'Deepseek'.");
 
-            var config = await _context.ApiKeyConfiguration.FirstOrDefaultAsync();
+            var config = await _context.ApiKeysConfiguration.FirstOrDefaultAsync();
             if (config == null)
                 return NotFound("Nenhuma configuração de API encontrada.");
 
@@ -106,7 +106,7 @@ namespace DeckFlow.Api.Controllers
         [HttpDelete("{provider}")]
         public async Task<IActionResult> DeleteApiKeyConfiguration(string provider)
         {
-            var config = await _context.ApiKeyConfiguration.FirstOrDefaultAsync();
+            var config = await _context.ApiKeysConfiguration.FirstOrDefaultAsync();
             if (config == null)
                 return NotFound("Nenhuma configuração de API encontrada.");
 
