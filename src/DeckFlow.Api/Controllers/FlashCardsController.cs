@@ -1,6 +1,5 @@
 ﻿using DeckFlow.Api.Infrastructure;
 using DeckFlow.Domain.Entities;
-using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
