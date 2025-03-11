@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using DeckFlow.Domain.Entities;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -18,4 +18,6 @@ public class AppDbContext : DbContext
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
+
+public DbSet<DeckFlow.Domain.Entities.ApiKeyConfiguration> ApiKeyConfiguration { get; set; } = default!;
 }
