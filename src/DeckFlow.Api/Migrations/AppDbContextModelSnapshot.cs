@@ -37,6 +37,23 @@ namespace DeckFlow.Api.Migrations
                     b.ToTable("ApiKeysConfiguration");
                 });
 
+            modelBuilder.Entity("DeckFlow.Domain.Entities.Category", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("DeckFlow.Domain.Entities.FlashCard", b =>
                 {
                     b.Property<long>("Id")
@@ -79,6 +96,11 @@ namespace DeckFlow.Api.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Rating")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasDefaultValue(1);
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -86,26 +108,9 @@ namespace DeckFlow.Api.Migrations
                     b.ToTable("FlashCards");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Category", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categories");
-                });
-
             modelBuilder.Entity("DeckFlow.Domain.Entities.FlashCard", b =>
                 {
-                    b.HasOne("Domain.Entities.Category", "Category")
+                    b.HasOne("DeckFlow.Domain.Entities.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
