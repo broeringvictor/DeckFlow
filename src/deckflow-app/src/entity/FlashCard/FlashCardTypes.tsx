@@ -1,4 +1,4 @@
-﻿    export class FlashCard {
+﻿export class FlashCard {
     id: number;
     question: string;
     answer: string;
@@ -12,6 +12,7 @@
     rating: number;
     categoryId: number;
 
+    // Construtor para leitura/atualização
     constructor(data: Partial<FlashCard>) {
         this.id = data.id ?? 0;
         this.question = data.question ?? "";
@@ -27,7 +28,19 @@
         this.categoryId = data.categoryId ?? 0;
     }
 
-
+    // Função estática para criação de novo FlashCard
+    static create(data: Partial<FlashCard>): FlashCard {
+        return new FlashCard({
+            question: data.question ?? "",
+            answer: data.answer ?? "",
+            incorrectAnswerA: data.incorrectAnswerA ?? "",
+            incorrectAnswerB: data.incorrectAnswerB ?? "",
+            incorrectAnswerC: data.incorrectAnswerC ?? "",
+            incorrectAnswerD: data.incorrectAnswerD ?? "",
+            cardImage: data.cardImage,
+            categoryId: data.categoryId ?? 2, // Define 2 como valor default para criação
+        });
+    }
 
     /**
      * Cria uma instância de FlashCard a partir de um JSON
@@ -40,18 +53,18 @@
         const data = json as Record<string, unknown>;
 
         return new FlashCard({
-            id: (typeof data.id === "number") ? data.id : 0,
-            question: (typeof data.question === "string") ? data.question : "",
-            answer: (typeof data.answer === "string") ? data.answer : "",
-            incorrectAnswerA: (typeof data.incorrectAnswerA === "string") ? data.incorrectAnswerA : "",
-            incorrectAnswerB: (typeof data.incorrectAnswerB === "string") ? data.incorrectAnswerB : "",
-            incorrectAnswerC: (typeof data.incorrectAnswerC === "string") ? data.incorrectAnswerC : "",
-            incorrectAnswerD: (typeof data.incorrectAnswerD === "string") ? data.incorrectAnswerD : "",
-            cardImage: (typeof data.cardImage === "string") ? data.cardImage : undefined,
-            createDate: (typeof data.createDate === "string") ? new Date(data.createDate) : new Date(),
-            lastUpdateDate: (typeof data.lastUpdateDate === "string") ? new Date(data.lastUpdateDate) : new Date(),
-            rating: (typeof data.rating === "number") ? data.rating : 0,
-            categoryId: (typeof data.categoryId === "number") ? data.categoryId : 0,
+            id: typeof data.id === "number" ? data.id : 0,
+            question: typeof data.question === "string" ? data.question : "",
+            answer: typeof data.answer === "string" ? data.answer : "",
+            incorrectAnswerA: typeof data.incorrectAnswerA === "string" ? data.incorrectAnswerA : "",
+            incorrectAnswerB: typeof data.incorrectAnswerB === "string" ? data.incorrectAnswerB : "",
+            incorrectAnswerC: typeof data.incorrectAnswerC === "string" ? data.incorrectAnswerC : "",
+            incorrectAnswerD: typeof data.incorrectAnswerD === "string" ? data.incorrectAnswerD : "",
+            cardImage: typeof data.cardImage === "string" ? data.cardImage : undefined,
+            createDate: typeof data.createDate === "string" ? new Date(data.createDate) : new Date(),
+            lastUpdateDate: typeof data.lastUpdateDate === "string" ? new Date(data.lastUpdateDate) : new Date(),
+            rating: typeof data.rating === "number" ? data.rating : 0,
+            categoryId: typeof data.categoryId === "number" ? data.categoryId : 0,
         });
     }
 }

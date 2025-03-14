@@ -105,11 +105,13 @@ namespace DeckFlow.Api.Controllers
             {
                 Question = flashCardDto.Question,
                 Answer = flashCardDto.Answer,
+                // Corrigido aqui: usar os valores do DTO
+                IncorrectAnswerA = flashCardDto.IncorrectAnswerA,
+                IncorrectAnswerB = flashCardDto.IncorrectAnswerB,
+                IncorrectAnswerC = flashCardDto.IncorrectAnswerC,
+                IncorrectAnswerD = flashCardDto.IncorrectAnswerD,
+                CardImage = flashCardDto.CardImage, // Adicionar esta linha se necessário
                 CategoryId = flashCardDto.CategoryId,
-                IncorrectAnswerA = string.Empty,
-                IncorrectAnswerB = string.Empty,
-                IncorrectAnswerC = string.Empty,
-                IncorrectAnswerD = string.Empty,
                 CreateDate = DateTime.Now,
                 LastUpdateDate = DateTime.Now
             };

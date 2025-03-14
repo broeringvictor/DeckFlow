@@ -6,7 +6,17 @@ import { CreateFlashCard } from "../../api/FlashCard/CreateFlashCard.tsx";
 import { updateFlashCard } from "../../api/FlashCard/UpdateFlashCard.tsx";
 import { deleteFlashCard } from "../../api/FlashCard/DeleteFlashCard.tsx";
 import { GetFlashCardById } from "../../api/FlashCard/GetFlashCardById.tsx";
-import {CreateFlashCardDto} from "../../entity/FlashCard/CreateFlashCardDto.tsx";
+
+interface CreateFlashCardParams {
+    question: string;
+    answer: string;
+    incorrectAnswerA: string;
+    incorrectAnswerB: string;
+    incorrectAnswerC: string;
+    incorrectAnswerD: string;
+    cardImage?: string;
+    categoryId: number;
+}
 
 export const useFlashCard = () => {
     const [flashCards, setFlashCards] = useState<FlashCard[]>([]);
@@ -28,20 +38,14 @@ export const useFlashCard = () => {
     };
 
 
-    const addFlashCard = async (flashCardData: CreateFlashCardDto) => {
+    const addFlashCard = async (flashCardData: CreateFlashCardParams) => {
         setLoading(true);
         setError(null);
         try {
-            const newFlashCard = await CreateFlashCard(
-                flashCardData.question,
-                flashCardData.answer,
-                flashCardData.incorrectAnswerA,
-                flashCardData.incorrectAnswerB,
-                flashCardData.incorrectAnswerC,
-                flashCardData.incorrectAnswerD,
-                flashCardData.cardImage,
-                flashCardData.categoryId
-            );
+
+            const newFlashCard = await CreateFlashCard(flashCardData);
+
+            // Atualiza o estado adicionando o novo flashcard
             setFlashCards((prev) => [...prev, newFlashCard]);
         } catch (err) {
             console.error("Erro ao criar FlashCard:", err);

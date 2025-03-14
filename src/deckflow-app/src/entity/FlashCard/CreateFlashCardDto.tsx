@@ -6,5 +6,5 @@
     incorrectAnswerC: string;
     incorrectAnswerD: string;
     cardImage: string;
-    categoryId: number;
+    categoryId?: number;
 }
