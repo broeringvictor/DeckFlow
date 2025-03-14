@@ -1,1 +1,2 @@
-﻿export { useFlashCardData } from "./UseFlashCardData";
+﻿export {useFlashCard} from './UseFlashCard.ts';
+

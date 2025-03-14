@@ -1,0 +1,115 @@
+﻿/* Define a largura máxima e centraliza o container */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Cabeçalho centralizado */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estiliza o formulário */
+form {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Cada grupo de formulário em coluna */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para os labels */
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Estilo para os inputs */
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Foco no input */
+input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+/* Mensagens de erro */
+.error {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Estilo para o botão */
+button {
+    padding: 12px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover no botão */
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    form {
+        padding: 15px;
+    }
+}
+/* Define a largura máxima e centraliza o container */
+.edit-container {
+    max-width: 960px; /* aumenta o max-width para aproveitar melhor telas grandes */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Cabeçalho centralizado */
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilos para o formulário já existentes, por exemplo: */
+form {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade: em telas menores, as colunas ocupam toda a largura */
+@media (max-width: 992px) {
+    .col-lg-4,
+    .col-lg-8 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}

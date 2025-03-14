@@ -41,10 +41,7 @@ namespace DeckFlow.Api.Controllers
             int portion40 = (int)(totalRequested * 0.4);
             int portion20 = (int)(totalRequested * 0.2);
 
-            // Para evitar problemas de arredondamento e soma que exceda totalRequested
-            // podemos garantir que a soma final não ultrapasse a quantidade solicitada
-            // Ex: portion40 + portion40 + portion20 = 100% mas dependendo do arredondamento
-            // pode ficar menor/maior. Ajuste conforme necessidade.
+
             int sumPortions = portion40 + portion40 + portion20;
             if (sumPortions < totalRequested)
             {

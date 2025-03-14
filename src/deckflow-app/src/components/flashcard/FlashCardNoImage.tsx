@@ -9,6 +9,8 @@ interface FlashCardProps {
     incorrectAnswerC: string;
     incorrectAnswerD: string;
     rating: number;
+    onAnswer?: (isCorrect: boolean) => void;
+    disabled?: boolean; // nova propriedade
 }
 
 const FlashCardNoImage: React.FC<FlashCardProps> = ({
@@ -19,6 +21,8 @@ const FlashCardNoImage: React.FC<FlashCardProps> = ({
                                                         incorrectAnswerC,
                                                         incorrectAnswerD,
                                                         rating,
+                                                        onAnswer,
+                                                        disabled = false,
                                                     }) => {
     const [shuffledAnswers, setShuffledAnswers] = useState<string[]>([]);
     const [feedback, setFeedback] = useState<string | null>(null);
@@ -36,16 +40,21 @@ const FlashCardNoImage: React.FC<FlashCardProps> = ({
     }, [answer, incorrectAnswerA, incorrectAnswerB, incorrectAnswerC, incorrectAnswerD]);
 
     const handleAnswerClick = (selected: string) => {
+        // Se estiver desabilitado, não executa nada
+        if (disabled) return;
         setSelectedAnswer(selected);
-        setFeedback(selected === answer ? "Correto!" : "Incorreto!");
+        const isCorrect = selected === answer;
+        setFeedback(isCorrect ? "Correto!" : "Incorreto!");
+        if (onAnswer) {
+            onAnswer(isCorrect);
+        }
     };
 
     return (
-        <div className="flashcard">
+        <div className={`flashcard ${disabled ? 'disabled' : ''}`}>
             <div className="flashcard-body">
-                <span className="badge text-bg-primary rounded-pill">{rating} </span>
+                <span className="badge text-bg-primary rounded-pill">Rating: {rating} </span>
                 <p className="card-text">{question}</p>
-
             </div>
             <ul className="flashcard-list">
                 {shuffledAnswers.map((ans, index) => (
@@ -55,6 +64,7 @@ const FlashCardNoImage: React.FC<FlashCardProps> = ({
                             selectedAnswer === ans ? (ans === answer ? 'correct' : 'incorrect') : ''
                         }`}
                         onClick={() => handleAnswerClick(ans)}
+                        style={disabled ? { pointerEvents: 'none', opacity: 0.6 } : undefined} // ou use a classe "disabled"
                     >
                         {letterLabels[index]} {ans}
                     </li>

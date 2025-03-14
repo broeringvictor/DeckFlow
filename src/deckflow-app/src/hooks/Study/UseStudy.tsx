@@ -1,8 +1,9 @@
 ﻿import { useState, useEffect } from "react";
-import { FlashCard } from "../../entity/FlashCardTypes";
-import { getFlashCards } from "../../api/FlashCardApi";
+import { FlashCard } from "../../entity/FlashCard/FlashCardTypes.tsx";
 
-export const useFlashCardData = (categoryId?: number, numberOfCards?: number) => {
+import {getStudyFlashCards} from "../../api/Study/GetStudyFlashCards.tsx";
+
+export const useStudy = (categoryId?: number, numberOfCards?: number) => {
     const [flashCards, setFlashCards] = useState<FlashCard[]>([]);
     const [loading, setLoading] = useState<boolean>(false); // Inicial loading como false
     const [error, setError] = useState<string | null>(null);
@@ -18,7 +19,7 @@ export const useFlashCardData = (categoryId?: number, numberOfCards?: number) =>
             setError(null); // Reseta erro ao iniciar nova requisição
 
             try {
-                const data = await getFlashCards(categoryId, numberOfCards); // Chama a API
+                const data = await getStudyFlashCards(categoryId, numberOfCards); // Chama a API
                 setFlashCards(data); // Atualiza os FlashCards
             } catch (err) {
                 if (err instanceof Error) {

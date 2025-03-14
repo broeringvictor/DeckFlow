@@ -1,4 +1,4 @@
-﻿export class FlashCard {
+﻿    export class FlashCard {
     id: number;
     question: string;
     answer: string;
@@ -26,6 +26,8 @@
         this.rating = data.rating ?? 0;
         this.categoryId = data.categoryId ?? 0;
     }
+
+
 
     /**
      * Cria uma instância de FlashCard a partir de um JSON
