@@ -9,6 +9,7 @@ interface FlashCardProps {
     incorrectAnswerC: string;
     incorrectAnswerD: string;
     rating: number;
+    onAnswer?: (isCorrect: boolean) => void;
 }
 
 const FlashCardNoImage: React.FC<FlashCardProps> = ({
@@ -19,6 +20,7 @@ const FlashCardNoImage: React.FC<FlashCardProps> = ({
                                                         incorrectAnswerC,
                                                         incorrectAnswerD,
                                                         rating,
+                                                        onAnswer,
                                                     }) => {
     const [shuffledAnswers, setShuffledAnswers] = useState<string[]>([]);
     const [feedback, setFeedback] = useState<string | null>(null);
@@ -37,13 +39,17 @@ const FlashCardNoImage: React.FC<FlashCardProps> = ({
 
     const handleAnswerClick = (selected: string) => {
         setSelectedAnswer(selected);
-        setFeedback(selected === answer ? "Correto!" : "Incorreto!");
+        const isCorrect = selected === answer;
+        setFeedback(isCorrect ? "Correto!" : "Incorreto!");
+        if (onAnswer) {
+            onAnswer(isCorrect);
+        }
     };
 
     return (
         <div className="flashcard">
             <div className="flashcard-body">
-                <span className="badge text-bg-primary rounded-pill">{rating} </span>
+                <span className="badge text-bg-primary rounded-pill">Rating: {rating} </span>
                 <p className="card-text">{question}</p>
 
             </div>
