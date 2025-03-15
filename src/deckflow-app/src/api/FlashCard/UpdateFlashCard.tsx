@@ -1,4 +1,4 @@
-﻿import { FlashCard } from "../../entity/FlashCard/FlashCardTypes.tsx";
+﻿import { FlashCard } from "../../context/Entity/FlashCard/FlashCardTypes.tsx";
 import axiosInstance from "../AxiosInstance.tsx";
 import { GetFlashCardById } from "./GetFlashCardById.tsx";
 

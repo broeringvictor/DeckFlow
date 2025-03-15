@@ -12,7 +12,7 @@
     /**
      * Cria uma instância de Category a partir de um JSON
      */
-    static fromJson(json: any): Category {
+    static fromJson(json: { id: number; title: string; description: string }): Category {
         return new Category({
             id: json.id,
             title: json.title,
