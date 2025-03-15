@@ -1,41 +1,54 @@
 ﻿import { useState, useEffect } from "react";
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Form } from "react-bootstrap";
 import {
     useCreateApiKeyConfiguration,
     useGetApiKeyConfiguration
 } from "../../hooks/ApiKeyConfiguration";
-import "./CategoryPage.css"; // Reutilizando os estilos
+import "./CategoryPage.css";
 
 const ConfigurationPage = () => {
     // Estados
-    const [selectedId, setSelectedId] = useState<number | null>(null);
     const [showModal, setShowModal] = useState(false);
-    const [form, setForm] = useState({ name: "", key: "", permissions: "" });
+    const [form, setForm] = useState<{
+        provider: "OpenAI" | "Deepseek"; // Ajustando o tipo literal aqui
+        apiKey: string;
+    }>({
+        provider: "OpenAI", // Valor padrão inicial
+        apiKey: "",
+    });
 
     // Hooks
-    const { getApiKeyConfiguration, loading: loadingKeys, error: errorKeys, apiKeys } = useGetApiKeyConfiguration();
-    const { createApiKeyConfiguration, loading: creating, error: errorCreating } = useCreateApiKeyConfiguration();
+    const {
+        getApiKeyConfiguration,
+        loading: loadingKeys,
+        error: errorKeys,
+        apiKeys
+    } = useGetApiKeyConfiguration();
+
+    const {
+        createApiKeyConfiguration,
+        loading: creating,
+        error: errorCreating
+    } = useCreateApiKeyConfiguration();
 
     // Carregar configurações inicialmente
     useEffect(() => {
         getApiKeyConfiguration();
     }, []);
 
-    // Handlers
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
             await createApiKeyConfiguration(form);
-            await getApiKeyConfiguration(); // Atualiza a lista
+            await getApiKeyConfiguration();
             resetForm();
         } catch (error) {
-            console.error("Failed to create API key:", error);
+            console.error("Falha ao criar chave API:", error);
         }
     };
 
     const resetForm = () => {
-        setForm({ name: "", key: "", permissions: "" });
-        setSelectedId(null);
+        setForm({ provider: "OpenAI", apiKey: "" });
         setShowModal(false);
     };
 
@@ -56,21 +69,19 @@ const ConfigurationPage = () => {
             <table className="category-table">
                 <thead>
                 <tr>
-                    <th>Nome</th>
-                    <th>Chave</th>
-                    <th>Permissões</th>
+                    <th>OpenAI API Key</th>
+                    <th>Deepseek API Key</th>
                 </tr>
                 </thead>
                 <tbody>
                 {loadingKeys ? (
                     <tr>
-                        <td colSpan={3}>Carregando chaves...</td>
+                        <td colSpan={2}>Carregando chaves...</td>
                     </tr>
                 ) : apiKeys?.map((key) => (
                     <tr key={key.id}>
-                        <td>{key.name}</td>
-                        <td>{key.key}</td>
-                        <td>{key.permissions}</td>
+                        <td>{key.OpenAiApiKey}</td>
+                        <td>{key.DeepseekApiKey}</td>
                     </tr>
                 ))}
                 </tbody>
@@ -78,27 +89,29 @@ const ConfigurationPage = () => {
 
             <Modal show={showModal} onHide={resetForm}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Nova Chave API</Modal.Title>
+                    <Modal.Title>Criar Nova Chave API</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form onSubmit={handleFormSubmit}>
                         <div className="mb-3">
-                            <label>Nome:</label>
-                            <input
-                                type="text"
+                            <label>Provedor:</label>
+                            <select
                                 className="form-control"
-                                value={form.name}
-                                onChange={(e) => setForm({...form, name: e.target.value})}
+                                value={form.provider}
+                                onChange={(e) => setForm({ ...form, provider: e.target.value as "OpenAI" | "Deepseek" })}
                                 required
-                            />
+                            >
+                                <option value="OpenAI">OpenAI</option>
+                                <option value="Deepseek">Deepseek</option>
+                            </select>
                         </div>
 
                         <div className="mb-3">
-                            <label>Permissões:</label>
-                            <textarea
-                                className="form-control"
-                                value={form.permissions}
-                                onChange={(e) => setForm({...form, permissions: e.target.value})}
+                            <Form.Label>Chave API:</Form.Label>
+                            <Form.Control
+                                type="text"
+                                value={form.apiKey}
+                                onChange={(e) => setForm({...form, apiKey: e.target.value})}
                                 required
                             />
                         </div>
@@ -116,7 +129,11 @@ const ConfigurationPage = () => {
                             </Button>
                         </div>
 
-                        {errorCreating && <div className="alert alert-danger mt-3">{errorCreating}</div>}
+                        {errorCreating &&
+                            <div className="alert alert-danger mt-3">
+                                {errorCreating}
+                            </div>
+                        }
                     </form>
                 </Modal.Body>
             </Modal>

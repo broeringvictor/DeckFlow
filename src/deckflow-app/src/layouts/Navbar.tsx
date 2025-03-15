@@ -24,6 +24,9 @@
                         <li className="nav-item">
                             <a className="nav-link" href="/category">Category</a>
                         </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/configuration">Configuration</a>
+                        </li>
 
                     </ul>
                 </div>
