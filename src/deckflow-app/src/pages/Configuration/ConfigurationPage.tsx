@@ -22,7 +22,7 @@ const ConfigurationPage = () => {
         getApiKeyConfiguration,
         loading: loadingKeys,
         error: errorKeys,
-        apiKeys
+        apiConfig
     } = useGetApiKeyConfiguration();
 
     const {
@@ -78,12 +78,12 @@ const ConfigurationPage = () => {
                     <tr>
                         <td colSpan={2}>Carregando chaves...</td>
                     </tr>
-                ) : apiKeys?.map((key) => (
-                    <tr key={key.id}>
-                        <td>{key.OpenAiApiKey}</td>
-                        <td>{key.DeepseekApiKey}</td>
+                ) : (
+                    <tr>
+                        <td>{apiConfig?.openAiApiKey || "Não configurado"}</td>
+                        <td>{apiConfig?.deepseekApiKey || "Não configurado"}</td>
                     </tr>
-                ))}
+                )}
                 </tbody>
             </table>
 

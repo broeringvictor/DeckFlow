@@ -1,35 +1,29 @@
-﻿
-export interface ApiKeyConfiguration {
+﻿export interface ApiKeyConfiguration {
     id: number;
-    OpenAiApiKey: string;
-    DeepseekApiKey: string;
+    openAiApiKey: string | null;
+    deepseekApiKey: string | null;
+    lastUpdated?: string;
 }
 
 export class ApiKeyConfigurationEntity {
     id: number;
-    OpenAiApiKey: string;
-    DeepseekApiKey: string;
+    openAiApiKey: string | null;
+    deepseekApiKey: string | null;
+    lastUpdated?: string;
 
     constructor(init: Partial<ApiKeyConfigurationEntity>) {
         this.id = init.id ?? 0;
-        this.OpenAiApiKey = init.OpenAiApiKey ?? '';
-        this.DeepseekApiKey = init.DeepseekApiKey ?? '';
+        this.openAiApiKey = init.openAiApiKey ?? null;
+        this.deepseekApiKey = init.deepseekApiKey ?? null;
+        this.lastUpdated = init.lastUpdated;
     }
 
     static fromApiKeyConfiguration(config: ApiKeyConfiguration): ApiKeyConfigurationEntity {
         return new ApiKeyConfigurationEntity({
             id: config.id,
-            OpenAiApiKey: config.OpenAiApiKey,
-            DeepseekApiKey: config.DeepseekApiKey,
+            openAiApiKey: config.openAiApiKey,
+            deepseekApiKey: config.deepseekApiKey,
+            lastUpdated: config.lastUpdated
         });
     }
-
-    toApiKeyConfiguration(): ApiKeyConfiguration {
-        return {
-            id: this.id,
-            OpenAiApiKey: this.OpenAiApiKey,
-            DeepseekApiKey: this.DeepseekApiKey,
-        };
-    }
 }
-export default ApiKeyConfigurationEntity;
