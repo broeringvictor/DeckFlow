@@ -1,6 +1,6 @@
 ﻿// useFlashCard.tsx
 import { useState, useEffect, useCallback } from "react";
-import { FlashCard } from "../../entity/FlashCard/FlashCardTypes.tsx";
+import { FlashCard } from "../../context/Entity/FlashCard/FlashCardTypes.tsx";
 import { GetAllFlashCards } from "../../api/FlashCard/GetAllFlashCards.tsx";
 import { CreateFlashCard } from "../../api/FlashCard/CreateFlashCard.tsx";
 import { updateFlashCard } from "../../api/FlashCard/UpdateFlashCard.tsx";

@@ -1,5 +1,5 @@
 ﻿// Busca flashcards por categoria e quantidade (endpoint customizado)
-import {FlashCard} from "../../entity/FlashCard/FlashCardTypes.tsx";
+import {FlashCard} from "../../context/Entity/FlashCard/FlashCardTypes.tsx";
 import axiosInstance from "../AxiosInstance.tsx";
 
 export const getStudyFlashCards = async (categoryId?: number, numberOfCards?: number): Promise<FlashCard[]> => {

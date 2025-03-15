@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect } from "react";
-import { FlashCard } from "../../entity/FlashCard/FlashCardTypes.tsx";
+import { FlashCard } from "../../context/Entity/FlashCard/FlashCardTypes.tsx";
 
 import {getStudyFlashCards} from "../../api/Study/GetStudyFlashCards.tsx";
 
