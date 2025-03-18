@@ -1,15 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import App from "./pages/Home/App.tsx";
 import Study from "./pages/Study/Study.tsx";
 import Navbar from "./layouts/Navbar.tsx";
-import AllFlashCardsPage from "./pages/FlashCard/AllFlashCardsPage";
-import EditFlashCardPage from "./pages/FlashCard/EditFlashCardPage";
+
 import CategoryPage from "./pages/Category/CategoryPage";
-import CreateFlashCardPage from "./pages/FlashCard/CreateFlashCardPage.tsx";
-import ConfigurationPage from "./pages/Configuration/ConfigurationPage.tsx"; // Import da página de edição
+
+import ConfigurationPage from "./pages/Configuration/ConfigurationPage.tsx";
+import AllFlashCardsPage from "./pages/flashCard/AllFlashCardsPage.tsx";
+import EditFlashCardPage from "./pages/flashCard/EditFlashCardPage.tsx";
+import CreateFlashCardPage from "./pages/flashCard/CreateFlashCardPage.tsx"; // Import da página de edição
 
 const root = document.getElementById("root");
 

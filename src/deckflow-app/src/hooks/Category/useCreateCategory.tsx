@@ -1,7 +1,8 @@
-﻿import { useState } from "react";
-import { CreateCategoryRequest } from "../../context/UseCases/Requests/Category/CreateCategoryRequest";
-import { Category } from "../../context/Entity/Category/Category";
-import CreateCategory from "../../api/Category/CreateCategory.tsx";
+﻿import {useState} from "react";
+import {CreateCategoryRequest} from "../../context/useCases/request/createCategoryRequest.tsx";
+import CreateCategory from "../../api/category/createCategoryApi.tsx";
+import {Category} from "../../context/entities/category/category.tsx";
+
 const useCreateCategory = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);

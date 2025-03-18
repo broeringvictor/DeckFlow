@@ -1,9 +1,6 @@
-﻿import { useState, useEffect } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
-import {
-    useCreateApiKeyConfiguration,
-    useGetApiKeyConfiguration
-} from "../../hooks/ApiKeyConfiguration";
+﻿import {useEffect, useState} from "react";
+import {Button, Form, Modal} from "react-bootstrap";
+import {useCreateApiKeyConfiguration, useGetApiKeyConfiguration} from "../../hooks/ApiKeyConfiguration";
 import "./CategoryPage.css";
 
 const ConfigurationPage = () => {

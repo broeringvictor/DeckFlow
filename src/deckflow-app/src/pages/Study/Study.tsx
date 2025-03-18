@@ -1,7 +1,7 @@
-﻿import React, { useState } from "react";
-import { useStudy } from "../../hooks/Study";
-import GetStudy from "../../components/form/GetStudy";
-import FlashCardStepper from "../../components/flashcard/FlashCardStepper";
+﻿import React, {useState} from "react";
+import {useStudy} from "../../hooks/Study";
+import GetStudy from "../../components/Form/GetStudy";
+import FlashCardStepper from "../../components/FlashCard/FlashCardStepper";
 import './Study.css';
 
 const Study: React.FC = () => {

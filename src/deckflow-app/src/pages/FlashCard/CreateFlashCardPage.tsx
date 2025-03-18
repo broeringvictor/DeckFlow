@@ -1,8 +1,8 @@
 ﻿// CreateFlashcardPage.tsx
-import { useFlashCard } from "../../hooks/flashcard";
-import { SubmitHandler } from "react-hook-form";
-import CreateFlashcardForm, { CreateFlashcardFormData } from "../../components/form/CreateFlashCardForm";
-import { useNavigate } from "react-router-dom";
+import {useFlashCard} from "../../hooks/flashcard";
+import {SubmitHandler} from "react-hook-form";
+import CreateFlashcardForm, {CreateFlashcardFormData} from "../../components/Form/CreateFlashCardForm";
+import {useNavigate} from "react-router-dom";
 
 const CreateFlashcardPage = () => {
     const { addFlashCard } = useFlashCard();
@@ -15,11 +15,11 @@ const CreateFlashcardPage = () => {
                 cardImage: formData.cardImage || null // Correção na sintaxe
             });
 
-            alert("FlashCard criado com sucesso!");
+            alert("flashCard criado com sucesso!");
             navigate("/flashcards");
         } catch (error) {
-            console.error("Erro ao criar flashcard:", error);
-            alert("Erro ao criar flashcard.");
+            console.error("Erro ao criar FlashCard:", error);
+            alert("Erro ao criar FlashCard.");
         }
     };
 

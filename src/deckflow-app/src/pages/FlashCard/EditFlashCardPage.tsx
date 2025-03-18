@@ -1,26 +1,37 @@
-﻿import React, { useEffect, useState, useCallback } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useFlashCard } from "../../hooks/flashcard";
+﻿import React, {useCallback, useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import {useFlashCard} from "../../hooks/flashcard";
 
 import "./EditFlashCardPage.css";
-import UpdateFlashcardForm, { FlashcardFormData } from "../../components/form/UpdateFlashCardForm";
-import FlashCardWithImage from "../../components/flashcard/FlashCardWithImage";
-import FlashCardNoImage from "../../components/flashcard/FlashCardNoImage";
+// Certifique-se de que o nome do componente está correto
+
+import {FlashCardNoImage} from "../../components/FlashCard";
+import  { FlashCardWithImage } from "../../components/FlashCard";
+import {UpdateFlashCardFormDataType} from "../../components/Form/UpdateFlashCardFormDataType.ts";
+import UpdateFlashCardForm from "../../components/Form/UpdateFlashCardForm.tsx";
+
+
+
+
+
+
+
+
 
 const EditFlashCardPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
     const { getFlashCardById, editFlashCard } = useFlashCard();
 
-    const [defaultValues, setDefaultValues] = useState<FlashcardFormData>({
+    const [defaultValues, setDefaultValues] = useState<UpdateFlashCardFormDataType>({
         question: "",
         answer: "",
         incorrectAnswerA: "",
         incorrectAnswerB: "",
         incorrectAnswerC: "",
         incorrectAnswerD: "",
-        cardImage: "",
-        categoryId: undefined,
+        cardImage: undefined, 
+        categoryId: 0, 
         rating: 0,
     });
 
@@ -37,27 +48,27 @@ const EditFlashCardPage: React.FC = () => {
                             incorrectAnswerB: flashCard.incorrectAnswerB || "",
                             incorrectAnswerC: flashCard.incorrectAnswerC || "",
                             incorrectAnswerD: flashCard.incorrectAnswerD || "",
-                            cardImage: flashCard.cardImage || "",
-                            categoryId: flashCard.categoryId,
+                            cardImage: flashCard.cardImage || undefined, // Ou ""
+                            categoryId: flashCard.categoryId || 0, // Garanta que seja número
                             rating: flashCard.rating || 0,
                         });
                     }
                 } catch (error) {
-                    console.error("Erro ao carregar flashcard para edição:", error);
+                    console.error("Erro ao carregar FlashCard para edição:", error);
                 }
             })();
         }
     }, [id, getFlashCardById]);
 
     const handleEditFlashCard = useCallback(
-        async (data: FlashcardFormData) => {
+        async (data: UpdateFlashCardFormDataType) => {
             try {
                 await editFlashCard({ id: Number(id), ...data });
-                alert("FlashCard atualizado com sucesso!");
+                alert("flashCard atualizado com sucesso!");
                 navigate("/flashcards");
             } catch (error) {
-                console.error("Erro ao atualizar flashcard:", error);
-                alert("Erro ao atualizar flashcard.");
+                console.error("Erro ao atualizar FlashCard:", error);
+                alert("Erro ao atualizar FlashCard.");
             }
         },
         [editFlashCard, id, navigate]
@@ -98,7 +109,7 @@ const EditFlashCardPage: React.FC = () => {
                     )}
                 </div>
                 <div className="col-lg-8">
-                    <UpdateFlashcardForm defaultValues={defaultValues} onSubmit={handleEditFlashCard} />
+                <UpdateFlashCardForm defaultValues={defaultValues} onSubmit={handleEditFlashCard} />
                 </div>
             </div>
         </div>

@@ -1,14 +1,14 @@
 ﻿// AllFlashCardsPage.tsx
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useFlashCard } from '../../hooks/flashcard';
+import {Link} from 'react-router-dom';
+import {useFlashCard} from '../../hooks/flashcard';
 import './AllFlashCardsPage.css';
 
 const AllFlashCardsPage: React.FC = () => {
     const { flashCards, loading, error, removeFlashCard } = useFlashCard();
 
     const handleDelete = async (id: number) => {
-        const confirmDelete = window.confirm('Tem certeza que deseja deletar este flashcard?');
+        const confirmDelete = window.confirm('Tem certeza que deseja deletar este FlashCard?');
         if (confirmDelete) {
             try {
                 await removeFlashCard(id);
