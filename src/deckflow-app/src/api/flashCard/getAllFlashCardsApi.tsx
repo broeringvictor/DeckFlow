@@ -1,9 +1,9 @@
-﻿import { FlashCard } from "../../context/Entity/FlashCard/FlashCardTypes.tsx";
-import axiosInstance from "../axiosInstance.tsx";
+﻿import {FlashCard} from "../../context/entities/flashCard/flashCard.tsx";
+import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
 
-export const getAllFlashCards = async (): Promise<FlashCard[]> => {
+export const getAllFlashCardsApi = async (): Promise<FlashCard[]> => {
     try {
-        const response = await axiosInstance.get("/api/FlashCards");
+        const response = await axiosInstanceDefault.get("/api/FlashCards");
 
         // Verifica se a resposta é um array antes de mapear
         if (!Array.isArray(response.data)) {

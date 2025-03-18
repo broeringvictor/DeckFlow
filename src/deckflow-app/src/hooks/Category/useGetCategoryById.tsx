@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect } from "react";
-import axiosInstance from "../../api/axiosInstance.tsx";
+import axiosInstanceDefault from "../../api/axiosInstanceDefault.tsx";
 import { Category } from "../../context/Entity/Category/Category";
 
 const useGetCategoryById = (id: number) => {
@@ -13,7 +13,7 @@ const useGetCategoryById = (id: number) => {
 
         try {
             // Faz a requisição para obter a categoria pelo ID
-            const response = await axiosInstance.get(`/api/Categories/${id}`);
+            const response = await axiosInstanceDefault.get(`/api/Categories/${id}`);
 
             // Verifica se a resposta é válida
             if (typeof response.data !== "object" || response.data === null) {

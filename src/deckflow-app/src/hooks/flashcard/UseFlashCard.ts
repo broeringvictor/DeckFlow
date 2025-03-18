@@ -1,11 +1,11 @@
 ﻿// useFlashCard.tsx
 import { useState, useEffect, useCallback } from "react";
-import { FlashCard } from "../../context/Entity/FlashCard/FlashCardTypes.tsx";
-import { getAllFlashCards } from "../../api/flashCard/getAllFlashCards.tsx";
-import { createFlashCard } from "../../api/flashCard/createFlashCard.tsx";
-import { updateFlashCard } from "../../api/flashCard/updateFlashCard.tsx";
-import { deleteFlashCard } from "../../api/flashCard/deleteFlashCard.tsx";
-import { getFlashCardById } from "../../api/flashCard/getFlashCardById.tsx";
+import {FlashCard} from "../../context/entities/flashCard/flashCard.tsx";
+import { getAllFlashCardsApi } from "../../api/flashCard/getAllFlashCardsApi.tsx";
+import { createFlashCardApi } from "../../api/flashCard/createFlashCardApi.tsx";
+import { updateFlashCardApi } from "../../api/flashCard/updateFlashCardApi.tsx";
+import { deleteFlashCardApi } from "../../api/flashCard/deleteFlashCardApi.tsx";
+import { getFlashCardByIdApi } from "../../api/flashCard/getFlashCardByIdApi.tsx";
 
 interface CreateFlashCardParams {
     question: string;
@@ -27,7 +27,7 @@ export const useFlashCard = () => {
         setLoading(true);
         setError(null);
         try {
-            const data = await getAllFlashCards();
+            const data = await getAllFlashCardsApi();
             setFlashCards(data);
         } catch (err) {
             console.error("Erro ao buscar FlashCards:", err);
@@ -43,7 +43,7 @@ export const useFlashCard = () => {
         setError(null);
         try {
 
-            const newFlashCard = await createFlashCard(flashCardData);
+            const newFlashCard = await createFlashCardApi(flashCardData);
 
             // Atualiza o estado adicionando o novo flashcard
             setFlashCards((prev) => [...prev, newFlashCard]);
@@ -60,7 +60,7 @@ export const useFlashCard = () => {
         setLoading(true);
         setError(null);
         try {
-            const updatedCard = await updateFlashCard(flashCard);
+            const updatedCard = await updateFlashCardApi(flashCard);
             setFlashCards((prev) =>
                 prev.map((card) => (card.id === updatedCard.id ? updatedCard : card))
             );
@@ -76,7 +76,7 @@ export const useFlashCard = () => {
         setLoading(true);
         setError(null);
         try {
-            await deleteFlashCard(id);
+            await deleteFlashCardApi(id);
             setFlashCards((prev) => prev.filter((card) => card.id !== id));
         } catch (err) {
             console.error("Erro ao deletar flashCard:", err);
@@ -86,11 +86,11 @@ export const useFlashCard = () => {
         }
     };
 
-    // Encapsula a função getFlashCardById com useCallback para estabilizar sua referência
+    // Encapsula a função getFlashCardByIdApi com useCallback para estabilizar sua referência
     const getFlashCardByIdFn = useCallback(
         async (id: number): Promise<FlashCard | null> => {
             try {
-                const data = await getFlashCardById(id);
+                const data = await getFlashCardByIdApi(id);
                 return data;
             } catch (err) {
                 console.error("Erro ao buscar flashCard por id:", err);

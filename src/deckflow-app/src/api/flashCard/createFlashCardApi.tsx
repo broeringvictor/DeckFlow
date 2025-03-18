@@ -1,10 +1,10 @@
-﻿import axiosInstance from "../axiosInstance.tsx";
-import { FlashCard } from "../../context/Entity/FlashCard/FlashCardTypes.tsx";
+﻿import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
+import {FlashCard} from "../../context/entities/flashCard/flashCard.tsx";
 
-export const createFlashCard = async (data: Partial<FlashCard>): Promise<FlashCard> => {
+export const createFlashCardApi = async (data: Partial<FlashCard>): Promise<FlashCard> => {
     try {
         // Posta os dados fornecidos para a API
-        const response = await axiosInstance.post("/api/FlashCards", data);
+        const response = await axiosInstanceDefault.post("/api/FlashCards", data);
 
         // Verifica se a API retornou um objeto válido
         if (typeof response.data !== "object" || response.data === null) {
@@ -19,4 +19,4 @@ export const createFlashCard = async (data: Partial<FlashCard>): Promise<FlashCa
     }
 };
 
-export default createFlashCard;
+export default createFlashCardApi;

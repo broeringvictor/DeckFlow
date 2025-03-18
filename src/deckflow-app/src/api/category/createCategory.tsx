@@ -1,4 +1,4 @@
-﻿import axiosInstance from "../axiosInstance.tsx";
+﻿import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
 import {Category} from "../../context/Entity/Category/Category.tsx";
 import {CreateCategoryRequest} from "../../context/UseCases/Requests/Category/CreateCategoryRequest.tsx";
 
@@ -9,7 +9,7 @@ export const createCategory = async (
 ): Promise<Category> => {
     try {
         // Posta os dados fornecidos para a API
-        const response = await axiosInstance.post("/api/Categories", data);
+        const response = await axiosInstanceDefault.post("/api/Categories", data);
 
         // Verifica se a API retornou um objeto válido
         if (typeof response.data !== "object" || response.data === null) {

@@ -1,10 +1,10 @@
 ﻿
-import axiosInstance from "../axiosInstance.tsx";
+import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
 import {Category} from "../../context/Entity/Category/Category.tsx";
 
 export const getFlashCardById = async (id: number): Promise<Category> => {
     try {
-        const response = await axiosInstance.get(`/api/Categories/${id}`);
+        const response = await axiosInstanceDefault.get(`/api/Categories/${id}`);
 
         // Agora checamos se a resposta é um objeto
         if (typeof response.data !== "object" || response.data === null) {

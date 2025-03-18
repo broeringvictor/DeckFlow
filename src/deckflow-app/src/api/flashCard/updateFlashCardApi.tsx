@@ -1,14 +1,15 @@
-﻿import { FlashCard } from "../../context/Entity/FlashCard/FlashCardTypes.tsx";
-import axiosInstance from "../axiosInstance.tsx";
-import { getFlashCardById } from "./getFlashCardById.tsx";
+﻿
+import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
+import { getFlashCardByIdApi } from "./getFlashCardByIdApi.tsx";
+import {FlashCard} from "../../context/entities/flashCard/flashCard.tsx";
 
-export const updateFlashCard = async (flashCard: Partial<FlashCard>): Promise<FlashCard> => {
+export const updateFlashCardApi = async (flashCard: Partial<FlashCard>): Promise<FlashCard> => {
     try {
-        const response = await axiosInstance.put(`/api/FlashCards/${flashCard.id}`, flashCard);
+        const response = await axiosInstanceDefault.put(`/api/FlashCards/${flashCard.id}`, flashCard);
 
         // Se o status for 204 (No Content), fazemos uma nova requisição GET para obter o flashcard atualizado.
         if (response.status === 204) {
-            return await getFlashCardById(Number(flashCard.id));
+            return await getFlashCardByIdApi(Number(flashCard.id));
         }
 
         // Caso a API retorne dados, utiliza-os para converter
@@ -22,4 +23,4 @@ export const updateFlashCard = async (flashCard: Partial<FlashCard>): Promise<Fl
     }
 };
 
-export default updateFlashCard;
+export default updateFlashCardApi;

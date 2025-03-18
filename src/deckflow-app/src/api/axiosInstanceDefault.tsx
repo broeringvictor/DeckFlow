@@ -1,6 +1,6 @@
 ﻿import axios from "axios";
 
-const axiosInstance = axios.create({
+const axiosInstanceDefault = axios.create({
     baseURL: 'http://localhost:5249',
     headers: {
         "Content-Type": "application/json",
@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
 });
 
 
-axiosInstance.interceptors.response.use(
+axiosInstanceDefault.interceptors.response.use(
     response => response,
     error => {
         console.error("Erro na API:", error);
@@ -16,4 +16,4 @@ axiosInstance.interceptors.response.use(
     }
 );
 
-export default axiosInstance;
+export default axiosInstanceDefault;

@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect } from "react";
-import axiosInstance from "../../api/axiosInstance.tsx";
+import axiosInstanceDefault from "../../api/axiosInstanceDefault.tsx";
 import { Category } from "../../context/Entity/Category/Category";
 
 const useGetAllCategory = () => {
@@ -13,7 +13,7 @@ const useGetAllCategory = () => {
 
         try {
             // Faz a requisição para obter todas as categorias
-            const response = await axiosInstance.get<Category[]>("/api/Categories");
+            const response = await axiosInstanceDefault.get<Category[]>("/api/Categories");
 
             // Verifica se a resposta é válida e converte os dados
             const categoryList = response.data.map((item) => Category.fromJson(item));

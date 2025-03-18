@@ -1,4 +1,4 @@
-﻿import axiosInstance from "../axiosInstance.tsx";
+﻿import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
 import { Category } from "../../context/Entity/Category/Category";
 import { UpdateCategoryRequest } from "../../context/UseCases/Requests/Category/UpdateCategoryRequest.tsx";
 import GetCategoryById from "./getCategoryById.tsx";
@@ -8,7 +8,7 @@ export const updateCategory = async (
 ): Promise<Category> => {
     try {
         // Envia os dados atualizados para a API
-        const response = await axiosInstance.put(`/api/Categories/${data.id}`, {
+        const response = await axiosInstanceDefault.put(`/api/Categories/${data.id}`, {
             id: data.id,
             title: data.title,
             description: data.description,
