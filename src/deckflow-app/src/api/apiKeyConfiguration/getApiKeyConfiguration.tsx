@@ -1,8 +1,8 @@
 ﻿
-import axiosInstance from "../AxiosInstance.tsx";
+import axiosInstance from "../axiosInstance.tsx";
 import {ApiKeyConfigurationEntity} from "../../context/Entity/ApiKeyConfiguration/ApiKeyConfiguration.tsx";
 
-export const GetApiKeyConfiguration = async (): Promise<ApiKeyConfigurationEntity> => {
+export const getApiKeyConfiguration = async (): Promise<ApiKeyConfigurationEntity> => {
     try {
         const response = await axiosInstance.get("api/ApiKeyConfiguration");
 

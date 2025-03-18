@@ -15,7 +15,7 @@ const CreateFlashcardPage = () => {
                 cardImage: formData.cardImage || null // Correção na sintaxe
             });
 
-            alert("FlashCard criado com sucesso!");
+            alert("flashCard criado com sucesso!");
             navigate("/flashcards");
         } catch (error) {
             console.error("Erro ao criar flashcard:", error);

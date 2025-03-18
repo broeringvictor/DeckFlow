@@ -117,7 +117,7 @@ const CreateFlashcardForm: React.FC<Props> = ({ onSubmit }) => {
                     type="number"
                     className="form-control"
                     {...register("categoryId", {
-                        required: "Category ID is required",
+                        required: "category ID is required",
                         valueAsNumber: true
                     })}
                 />

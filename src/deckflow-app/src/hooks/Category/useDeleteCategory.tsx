@@ -1,5 +1,5 @@
 ﻿import { useState } from "react";
-import DeleteCategory from "../../api/Category/DeleteCategory.tsx";
+import deleteCategory from "../../api/category/deleteCategory.tsx";
 
 
 const useDeleteCategory = () => {
@@ -14,7 +14,7 @@ const useDeleteCategory = () => {
 
         try {
             // Faz a solicitação de exclusão via API (função correta)
-            await DeleteCategory(id);
+            await deleteCategory(id);
 
             // Marca a operação como bem-sucedida
             setSuccess(true);

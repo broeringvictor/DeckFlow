@@ -1,7 +1,7 @@
 ﻿import { FlashCard } from "../../context/Entity/FlashCard/FlashCardTypes.tsx";
-import axiosInstance from "../AxiosInstance.tsx";
+import axiosInstance from "../axiosInstance.tsx";
 
-export const GetAllFlashCards = async (): Promise<FlashCard[]> => {
+export const getAllFlashCards = async (): Promise<FlashCard[]> => {
     try {
         const response = await axiosInstance.get("/api/FlashCards");
 

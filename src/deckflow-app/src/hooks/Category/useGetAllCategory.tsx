@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect } from "react";
-import axiosInstance from "../../api/AxiosInstance";
+import axiosInstance from "../../api/axiosInstance.tsx";
 import { Category } from "../../context/Entity/Category/Category";
 
 const useGetAllCategory = () => {

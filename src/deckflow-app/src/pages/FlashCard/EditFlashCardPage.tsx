@@ -53,7 +53,7 @@ const EditFlashCardPage: React.FC = () => {
         async (data: FlashcardFormData) => {
             try {
                 await editFlashCard({ id: Number(id), ...data });
-                alert("FlashCard atualizado com sucesso!");
+                alert("flashCard atualizado com sucesso!");
                 navigate("/flashcards");
             } catch (error) {
                 console.error("Erro ao atualizar flashcard:", error);

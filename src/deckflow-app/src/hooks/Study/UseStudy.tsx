@@ -1,7 +1,7 @@
 ﻿import { useState, useEffect } from "react";
 import { FlashCard } from "../../context/Entity/FlashCard/FlashCardTypes.tsx";
 
-import {getStudyFlashCards} from "../../api/Study/GetStudyFlashCards.tsx";
+import {getStudyFlashCards} from "../../api/study/getStudyFlashCards.tsx";
 
 export const useStudy = (categoryId?: number, numberOfCards?: number) => {
     const [flashCards, setFlashCards] = useState<FlashCard[]>([]);

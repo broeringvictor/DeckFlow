@@ -1,7 +1,7 @@
 ﻿import { FlashCard } from "../../context/Entity/FlashCard/FlashCardTypes.tsx";
-import axiosInstance from "../AxiosInstance.tsx";
+import axiosInstance from "../axiosInstance.tsx";
 
-export const GetFlashCardById = async (id: number): Promise<FlashCard> => {
+export const getFlashCardById = async (id: number): Promise<FlashCard> => {
     try {
         const response = await axiosInstance.get(`/api/FlashCards/${id}`);
 
@@ -10,13 +10,13 @@ export const GetFlashCardById = async (id: number): Promise<FlashCard> => {
             throw new Error("A resposta da API não é um objeto válido");
         }
 
-        // Se tudo certo, retornamos o FlashCard convertido
+        // Se tudo certo, retornamos o flashCard convertido
         return FlashCard.fromJson(response.data);
     } catch (error) {
-        console.error("Erro ao buscar FlashCard por ID:", error);
+        console.error("Erro ao buscar flashCard por ID:", error);
         throw error;
     }
 };
 
 
-export default GetFlashCardById;
+export default getFlashCardById;

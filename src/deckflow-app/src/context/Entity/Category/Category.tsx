@@ -10,7 +10,7 @@
     }
 
     /**
-     * Cria uma instância de Category a partir de um JSON
+     * Cria uma instância de category a partir de um JSON
      */
     static fromJson(json: { id: number; title: string; description: string }): Category {
         return new Category({

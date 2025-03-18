@@ -28,7 +28,7 @@
         this.categoryId = data.categoryId ?? 0;
     }
 
-    // Função estática para criação de novo FlashCard
+    // Função estática para criação de novo flashCard
     static create(data: Partial<FlashCard>): FlashCard {
         return new FlashCard({
             question: data.question ?? "",
@@ -43,11 +43,11 @@
     }
 
     /**
-     * Cria uma instância de FlashCard a partir de um JSON
+     * Cria uma instância de flashCard a partir de um JSON
      */
     static fromJson(json: unknown): FlashCard {
         if (typeof json !== "object" || json === null) {
-            throw new Error("Invalid JSON format for FlashCard");
+            throw new Error("Invalid JSON format for flashCard");
         }
 
         const data = json as Record<string, unknown>;

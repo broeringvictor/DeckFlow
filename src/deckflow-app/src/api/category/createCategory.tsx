@@ -1,10 +1,10 @@
-﻿import axiosInstance from "../AxiosInstance.tsx";
+﻿import axiosInstance from "../axiosInstance.tsx";
 import {Category} from "../../context/Entity/Category/Category.tsx";
 import {CreateCategoryRequest} from "../../context/UseCases/Requests/Category/CreateCategoryRequest.tsx";
 
 
 
-export const CreateCategory = async (
+export const createCategory = async (
     data: CreateCategoryRequest
 ): Promise<Category> => {
     try {
@@ -19,10 +19,10 @@ export const CreateCategory = async (
 
         return Category.fromJson(response.data);
     } catch (error) {
-        console.error("Erro ao criar FlashCard:", error);
+        console.error("Erro ao criar flashCard:", error);
         throw error;
     }
 };
 
 
-export default CreateCategory;
+export default createCategory;

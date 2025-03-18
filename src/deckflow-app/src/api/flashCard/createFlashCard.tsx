@@ -1,7 +1,7 @@
-﻿import axiosInstance from "../AxiosInstance.tsx";
+﻿import axiosInstance from "../axiosInstance.tsx";
 import { FlashCard } from "../../context/Entity/FlashCard/FlashCardTypes.tsx";
 
-export const CreateFlashCard = async (data: Partial<FlashCard>): Promise<FlashCard> => {
+export const createFlashCard = async (data: Partial<FlashCard>): Promise<FlashCard> => {
     try {
         // Posta os dados fornecidos para a API
         const response = await axiosInstance.post("/api/FlashCards", data);
@@ -11,12 +11,12 @@ export const CreateFlashCard = async (data: Partial<FlashCard>): Promise<FlashCa
             throw new Error("Verifique novamente os campos e tente novamente.");
         }
 
-        // Retorna o FlashCard criado, utilizando o `fromJson`
+        // Retorna o flashCard criado, utilizando o `fromJson`
         return FlashCard.fromJson(response.data);
     } catch (error) {
-        console.error("Erro ao criar FlashCard:", error);
+        console.error("Erro ao criar flashCard:", error);
         throw error;
     }
 };
 
-export default CreateFlashCard;
+export default createFlashCard;

@@ -1,9 +1,9 @@
-﻿import axiosInstance from "../AxiosInstance.tsx";
+﻿import axiosInstance from "../axiosInstance.tsx";
 import { Category } from "../../context/Entity/Category/Category";
 import { UpdateCategoryRequest } from "../../context/UseCases/Requests/Category/UpdateCategoryRequest.tsx";
-import GetCategoryById from "./GetCategoryById.tsx";
+import GetCategoryById from "./getCategoryById.tsx";
 
-export const UpdateCategory = async (
+export const updateCategory = async (
     data: UpdateCategoryRequest
 ): Promise<Category> => {
     try {
@@ -21,7 +21,7 @@ export const UpdateCategory = async (
         }
 
         if (typeof response.data !== "object" || response.data === null) {
-            throw new Error("API response is not a valid Category object");
+            throw new Error("API response is not a valid category object");
         }
 
         return Category.fromJson(response.data);
@@ -31,4 +31,4 @@ export const UpdateCategory = async (
     }
 };
 
-export default UpdateCategory;
+export default updateCategory;

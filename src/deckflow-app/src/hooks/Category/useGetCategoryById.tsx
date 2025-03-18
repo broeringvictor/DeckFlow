@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect } from "react";
-import axiosInstance from "../../api/AxiosInstance";
+import axiosInstance from "../../api/axiosInstance.tsx";
 import { Category } from "../../context/Entity/Category/Category";
 
 const useGetCategoryById = (id: number) => {
@@ -20,7 +20,7 @@ const useGetCategoryById = (id: number) => {
                 throw new Error("A resposta da API não é um objeto válido.");
             }
 
-            // Converte o objeto para uma instância de Category
+            // Converte o objeto para uma instância de category
             const fetchedCategory = Category.fromJson(response.data);
             setCategory(fetchedCategory);
         } catch (error) {

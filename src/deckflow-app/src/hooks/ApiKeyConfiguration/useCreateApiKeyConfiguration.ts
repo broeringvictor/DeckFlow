@@ -3,7 +3,7 @@ import {
     CreateApiKeyConfigurationRequest
 } from "../../context/UseCases/Requests/ApiKeyConfiguration/CreateApiKeyConfigurationRequest.ts";
 
-import { CreateApiKeyConfiguration } from "../../api/ApiKeyConfiguration/CreateApiKeyConfiguration.tsx";
+import { createApiKeyConfiguration } from "../../api/apiKeyConfiguration/createApiKeyConfiguration.tsx";
 import {ApiKeyConfigurationEntity} from "../../context/Entity/ApiKeyConfiguration/ApiKeyConfiguration.tsx";
 
 const useCreateApiKeyConfiguration = () => {
@@ -16,7 +16,7 @@ const useCreateApiKeyConfiguration = () => {
         setError(null);
 
         try {
-            const createdConfig = await CreateApiKeyConfiguration(data);
+            const createdConfig = await createApiKeyConfiguration(data);
             setApiKeyConfig(createdConfig);
         } catch (error) {
             const message = (error as Error).message;

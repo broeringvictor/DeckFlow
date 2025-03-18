@@ -3,7 +3,7 @@ import {
 
     ApiKeyConfigurationEntity
 } from "../../context/Entity/ApiKeyConfiguration/ApiKeyConfiguration.tsx";
-import {GetApiKeyConfiguration} from "../../api/ApiKeyConfiguration/GetApiKeyConfiguration.tsx";
+import {getApiKeyConfiguration} from "../../api/apiKeyConfiguration/getApiKeyConfiguration.tsx";
 
 
 
@@ -17,7 +17,7 @@ const useGetApiKeyConfiguration = () => {
         setError(null);
 
         try {
-            const config = await GetApiKeyConfiguration();
+            const config = await getApiKeyConfiguration();
             setApiConfig(config);
         } catch (error) {
             setError((error as Error).message || "Erro ao buscar configurações");

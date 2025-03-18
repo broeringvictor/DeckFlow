@@ -1,8 +1,8 @@
 ﻿
-import axiosInstance from "../AxiosInstance.tsx";
+import axiosInstance from "../axiosInstance.tsx";
 import {Category} from "../../context/Entity/Category/Category.tsx";
 
-export const GetAllCategory = async (): Promise<Category[]> => {
+export const getAllCategory = async (): Promise<Category[]> => {
     try {
         const response = await axiosInstance.get("/api/Categories");
 
