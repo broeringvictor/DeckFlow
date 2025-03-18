@@ -1,6 +1,7 @@
 ﻿import {useEffect, useState} from "react";
 import axiosInstanceDefault from "../../api/axiosInstanceDefault.tsx";
-import {Category} from "../../context/Entity/Category/Category";
+import {Category} from "../../context/entities/category/category.tsx";
+
 
 const useGetCategoryById = (id: number) => {
     const [category, setCategory] = useState<Category | null>(null);

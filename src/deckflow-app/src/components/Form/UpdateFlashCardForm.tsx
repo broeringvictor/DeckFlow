@@ -2,27 +2,17 @@
 import {SubmitHandler, useForm, useWatch} from "react-hook-form";
 import useIncorrectCreateAnswerDS from "../../hooks/DeepSeek/useIncorrectCreateAnswerDS.ts";
 import useWebSearch from "../../hooks/DeepSeek/useWebSearch.ts";
+import {UpdateFlashCardFormDataType} from "./UpdateFlashCardFormDataType.ts";
 
 
-// Define o formato dos dados do formulário de update
-export type UpdateFlashcardFormData = {
-    question: string;
-    answer: string;
-    incorrectAnswerA: string;
-    incorrectAnswerB: string;
-    incorrectAnswerC: string;
-    incorrectAnswerD: string;
-    cardImage: string | null;
-    categoryId: number;
-    // Se precisar de mais campos específicos do update, inclua-os aqui.
-};
 
-interface UpdateFlashcardFormProps {
-    defaultValues: UpdateFlashcardFormData;               // Valores iniciais vindos de fora
-    onSubmit: SubmitHandler<UpdateFlashcardFormData>;     // Função a ser chamada no submit
+
+interface UpdateFlashCardFormProps {
+    defaultValues: UpdateFlashCardFormDataType;               // Valores iniciais vindos de fora
+    onSubmit: SubmitHandler<UpdateFlashCardFormDataType>;     // Função a ser chamada no submit
 }
 
-const UpdateFlashcardForm: React.FC<UpdateFlashcardFormProps> = ({ defaultValues, onSubmit }) => {
+const UpdateFlashCardForm: React.FC<UpdateFlashCardFormProps> = ({ defaultValues, onSubmit }) => {
     const {
         // Hook responsável pelas imagens
         imageOptions,
@@ -40,7 +30,7 @@ const UpdateFlashcardForm: React.FC<UpdateFlashcardFormProps> = ({ defaultValues
         control,
         setValue,
         reset,
-    } = useForm<UpdateFlashcardFormData>({
+    } = useForm<UpdateFlashCardFormDataType>({
         defaultValues,
     });
 
@@ -52,12 +42,12 @@ const UpdateFlashcardForm: React.FC<UpdateFlashcardFormProps> = ({ defaultValues
     } = useIncorrectCreateAnswerDS();
 
     // Efeito para resetar o formulário sempre que defaultValues mudarem:
-    // (assim que trocar de flashcard, por exemplo)
+    // (assim que trocar de FlashCard, por exemplo)
     useEffect(() => {
         reset(defaultValues);
     }, [defaultValues, reset]);
 
-    // Sempre que imageUrl mudar no hook, atualiza o campo "cardImage" do form
+    // Sempre que imageUrl mudar no hook, atualiza o campo "cardImage" do Form
     useEffect(() => {
         if (imageUrl) {
             setValue("cardImage", imageUrl);
@@ -68,7 +58,7 @@ const UpdateFlashcardForm: React.FC<UpdateFlashcardFormProps> = ({ defaultValues
     const question = useWatch({ control, name: "question" });
     const correctAnswer = useWatch({ control, name: "answer" });
 
-    // Ao receber respostas incorretas do hook, atualiza os campos no form
+    // Ao receber respostas incorretas do hook, atualiza os campos no Form
     useEffect(() => {
         if (incorrectAnswers.length === 4) {
             setValue("incorrectAnswerA", incorrectAnswers[0]);
@@ -250,5 +240,5 @@ const UpdateFlashcardForm: React.FC<UpdateFlashcardFormProps> = ({ defaultValues
         </form>
     );
 };
+export default UpdateFlashCardForm;
 
-export default UpdateFlashcardForm;

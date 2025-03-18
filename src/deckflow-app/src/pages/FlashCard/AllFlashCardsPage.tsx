@@ -8,7 +8,7 @@ const AllFlashCardsPage: React.FC = () => {
     const { flashCards, loading, error, removeFlashCard } = useFlashCard();
 
     const handleDelete = async (id: number) => {
-        const confirmDelete = window.confirm('Tem certeza que deseja deletar este flashcard?');
+        const confirmDelete = window.confirm('Tem certeza que deseja deletar este FlashCard?');
         if (confirmDelete) {
             try {
                 await removeFlashCard(id);

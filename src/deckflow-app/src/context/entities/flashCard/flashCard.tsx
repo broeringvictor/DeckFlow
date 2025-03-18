@@ -6,7 +6,7 @@
     incorrectAnswerB: string;
     incorrectAnswerC: string;
     incorrectAnswerD: string;
-    cardImage?: string;
+    cardImage?: string | null;
     createDate: Date;
     lastUpdateDate: Date;
     rating: number;

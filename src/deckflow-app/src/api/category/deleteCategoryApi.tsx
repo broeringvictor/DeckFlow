@@ -1,7 +1,7 @@
-﻿// Deleta um flashcard (endpoint DELETE: /api/FlashCards/{id})
+﻿// Deleta um FlashCard (endpoint DELETE: /api/FlashCards/{id})
 import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
 
-export const deleteCategory = async (id: number): Promise<void> => {
+export const deleteCategoryApi = async (id: number): Promise<void> => {
     try {
         await axiosInstanceDefault.delete(`/api/Categories/${id}`);
     } catch (error) {
@@ -9,4 +9,4 @@ export const deleteCategory = async (id: number): Promise<void> => {
         throw error;
     }
 };
-export default deleteCategory;
+export default deleteCategoryApi;

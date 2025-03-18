@@ -1,6 +1,6 @@
 ﻿import {
     CreateApiKeyConfigurationRequest
-} from "../../context/UseCases/Requests/ApiKeyConfiguration/CreateApiKeyConfigurationRequest.ts";
+} from "../../context/useCases/request/createApiKeyConfigurationRequest.ts";
 import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
 import {ApiKeyConfigurationEntity} from "../../context/entities/apiKeyConfiguration/apiKeyConfiguration.tsx";
 

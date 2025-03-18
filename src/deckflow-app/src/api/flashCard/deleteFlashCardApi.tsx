@@ -1,4 +1,4 @@
-﻿// Deleta um flashcard (endpoint DELETE: /api/FlashCards/{id})
+﻿// Deleta um FlashCard (endpoint DELETE: /api/FlashCards/{id})
 import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
 
 export const deleteFlashCardApi = async (id: number): Promise<void> => {

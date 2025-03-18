@@ -2,9 +2,8 @@
 
 import createApiKeyConfigurationApi from "../../api/apiKeyConfiguration/createApiKeyConfigurationApi.tsx";
 import {ApiKeyConfigurationEntity} from "../../context/entities/apiKeyConfiguration/apiKeyConfiguration.tsx";
-import {
-    CreateApiKeyConfigurationRequest
-} from "../../context/useCases/requests/apiKeyConfiguration/createApiKeyConfigurationRequest.ts";
+import {CreateApiKeyConfigurationRequest} from "../../context/useCases/request/createApiKeyConfigurationRequest.ts";
+
 
 
 const useCreateApiKeyConfiguration = () => {

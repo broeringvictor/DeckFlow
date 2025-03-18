@@ -1,6 +1,8 @@
 ﻿import {useState} from "react";
-import {UpdateCategoryRequest} from "../../context/UseCases/Requests/Category/UpdateCategoryRequest";
-import {Category} from "../../context/Entity/Category/Category";
+import {UpdateCategoryRequest} from "../../context/useCases/request/updateCategoryRequest.tsx";
+import {Category} from "../../context/entities/category/category.tsx";
+import {updateCategoryApi} from "../../api/category/updateCategoryApi.tsx";
+
 
 
 const useUpdateCategory = () => {
@@ -14,7 +16,7 @@ const useUpdateCategory = () => {
 
         try {
             // Chama o serviço de atualização da categoria
-            const updatedCategory = await updateCategory(data);
+            const updatedCategory = await updateCategoryApi(data);
             setCategory(updatedCategory); // Salva a categoria atualizada no estado
         } catch (error) {
             console.error(error);

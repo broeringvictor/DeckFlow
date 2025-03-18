@@ -2,7 +2,7 @@
 import {Category} from "../../context/entities/category/category.tsx";
 
 
-export const getAllCategory = async (): Promise<Category[]> => {
+export const getAllCategoryApi = async (): Promise<Category[]> => {
     try {
         const response = await axiosInstanceDefault.get("/api/Categories");
 

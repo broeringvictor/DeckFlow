@@ -1,4 +1,5 @@
-﻿import {getApiKeyConfigurationApi} from "../../api/apiKeyConfiguration/getApiKeyConfigurationApi.tsx";
+﻿
+import getApiKeyConfigurationApi from "../../api/apiKeyConfiguration/getApiKeyConfigurationApi.tsx";
 import {ApiKeyConfigurationEntity} from "../../context/entities/apiKeyConfiguration/apiKeyConfiguration.tsx";
 
 

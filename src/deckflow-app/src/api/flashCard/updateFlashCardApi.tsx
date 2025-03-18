@@ -6,7 +6,7 @@ export const updateFlashCardApi = async (flashCard: Partial<FlashCard>): Promise
     try {
         const response = await axiosInstanceDefault.put(`/api/FlashCards/${flashCard.id}`, flashCard);
 
-        // Se o status for 204 (No Content), fazemos uma nova requisição GET para obter o flashcard atualizado.
+        // Se o status for 204 (No Content), fazemos uma nova requisição GET para obter o FlashCard atualizado.
         if (response.status === 204) {
             return await getFlashCardByIdApi(Number(flashCard.id));
         }

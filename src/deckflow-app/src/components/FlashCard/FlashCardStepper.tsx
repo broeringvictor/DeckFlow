@@ -73,7 +73,7 @@ const FlashCardStepper: React.FC<FlashCardStepperProps> = ({ flashcards }) => {
 
         </div>
 
-            {/* Conteúdo do flashcard ativo */}
+            {/* Conteúdo do FlashCard ativo */}
             <div className="tab-content">
                 {flashcards.map((flashcard, index) => (
                     <div

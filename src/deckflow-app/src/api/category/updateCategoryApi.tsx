@@ -1,10 +1,10 @@
 ﻿import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
 
-import {UpdateCategoryRequest} from "../../context/UseCases/Requests/Category/UpdateCategoryRequest.tsx";
-import GetCategoryById from "./getCategoryById.tsx";
+import {UpdateCategoryRequest} from "../../context/useCases/request/updateCategoryRequest.tsx";
+import GetCategoryById from "./getCategoryByIdApi.tsx";
 import {Category} from "../../context/entities/category/category.tsx";
 
-export const updateCategory = async (
+export const updateCategoryApi = async (
     data: UpdateCategoryRequest
 ): Promise<Category> => {
     try {
@@ -32,4 +32,3 @@ export const updateCategory = async (
     }
 };
 
-export default updateCategory;

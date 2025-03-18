@@ -45,7 +45,7 @@ export const useFlashCard = () => {
 
             const newFlashCard = await createFlashCardApi(flashCardData);
 
-            // Atualiza o estado adicionando o novo flashcard
+            // Atualiza o estado adicionando o novo FlashCard
             setFlashCards((prev) => [...prev, newFlashCard]);
         } catch (err) {
             console.error("Erro ao criar flashCard:", err);

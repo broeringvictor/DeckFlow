@@ -1,10 +1,10 @@
 ﻿import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
 
-import {CreateCategoryRequest} from "../../context/UseCases/Requests/Category/CreateCategoryRequest.tsx";
+import {CreateCategoryRequest} from "../../context/useCases/request/createCategoryRequest.tsx";
 import {Category} from "../../context/entities/category/category.tsx";
 
 
-export const createCategory = async (
+export const createCategoryApi = async (
     data: CreateCategoryRequest
 ): Promise<Category> => {
     try {
@@ -25,4 +25,4 @@ export const createCategory = async (
 };
 
 
-export default createCategory;
+export default createCategoryApi;
