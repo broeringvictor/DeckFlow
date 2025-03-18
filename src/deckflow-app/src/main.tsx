@@ -15,6 +15,10 @@ import CreateFlashCardPage from "./pages/flashCard/CreateFlashCardPage.tsx"; // 
 
 const root = document.getElementById("root");
 
+if (!root) {
+    throw new Error("Root element (#root) not found in the DOM");
+}
+
 ReactDOM.createRoot(root).render(
     <BrowserRouter>
         <Navbar />
@@ -24,9 +28,8 @@ ReactDOM.createRoot(root).render(
             <Route path="/flashcards" element={<AllFlashCardsPage />} />
             <Route path="/flashcards/:id" element={<EditFlashCardPage />} />
             <Route path="/flashcards/criar" element={<CreateFlashCardPage />} />
-            <Route path="/category" element={<CategoryPage/>} />
-            <Route path="/configuration" element={<ConfigurationPage/>} />
-
+            <Route path="/category" element={<CategoryPage />} />
+            <Route path="/configuration" element={<ConfigurationPage />} />
         </Routes>
     </BrowserRouter>
 );
