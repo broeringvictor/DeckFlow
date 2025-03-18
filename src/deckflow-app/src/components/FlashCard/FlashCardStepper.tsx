@@ -10,7 +10,7 @@ export interface FlashCardData {
     incorrectAnswerC: string;
     incorrectAnswerD: string;
     rating: number;
-    cardImage?: string;
+    cardImage?: string | null
 }
 
 interface FlashCardStepperProps {
