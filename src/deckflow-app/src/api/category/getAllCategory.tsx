@@ -1,6 +1,6 @@
-﻿
-import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
-import {Category} from "../../context/Entity/Category/Category.tsx";
+﻿import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
+import {Category} from "../../context/entities/category/category.tsx";
+
 
 export const getAllCategory = async (): Promise<Category[]> => {
     try {

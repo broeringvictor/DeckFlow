@@ -1,5 +1,5 @@
-﻿import {ApiKeyConfigurationEntity} from "../../context/Entity/ApiKeyConfiguration/ApiKeyConfiguration.tsx";
-import {getApiKeyConfiguration} from "../../api/apiKeyConfiguration/getApiKeyConfiguration.tsx";
+﻿import {getApiKeyConfigurationApi} from "../../api/apiKeyConfiguration/getApiKeyConfigurationApi.tsx";
+import {ApiKeyConfigurationEntity} from "../../context/entities/apiKeyConfiguration/apiKeyConfiguration.tsx";
 
 
 class ConfigService {
@@ -23,7 +23,7 @@ class ConfigService {
         }
 
         try {
-            const freshConfig = await getApiKeyConfiguration();
+            const freshConfig = await getApiKeyConfigurationApi();
             this.configCache = freshConfig;
             this.lastFetchTime = Date.now();
             return freshConfig;

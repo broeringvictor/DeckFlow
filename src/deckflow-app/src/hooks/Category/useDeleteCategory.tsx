@@ -1,5 +1,4 @@
-﻿import { useState } from "react";
-import deleteCategory from "../../api/category/deleteCategory.tsx";
+﻿import {useState} from "react";
 
 
 const useDeleteCategory = () => {

@@ -1,9 +1,9 @@
-﻿import React, { useEffect, useState, useCallback } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useFlashCard } from "../../hooks/flashcard";
+﻿import React, {useCallback, useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import {useFlashCard} from "../../hooks/flashcard";
 
 import "./EditFlashCardPage.css";
-import UpdateFlashcardForm, { FlashcardFormData } from "../../components/form/UpdateFlashCardForm";
+import UpdateFlashcardForm, {FlashcardFormData} from "../../components/form/UpdateFlashCardForm";
 import FlashCardWithImage from "../../components/flashcard/FlashCardWithImage";
 import FlashCardNoImage from "../../components/flashcard/FlashCardNoImage";
 

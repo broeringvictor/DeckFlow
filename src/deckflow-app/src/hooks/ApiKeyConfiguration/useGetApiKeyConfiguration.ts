@@ -1,10 +1,6 @@
-﻿import { useState } from "react";
-import {
-
-    ApiKeyConfigurationEntity
-} from "../../context/Entity/ApiKeyConfiguration/ApiKeyConfiguration.tsx";
-import {getApiKeyConfiguration} from "../../api/apiKeyConfiguration/getApiKeyConfiguration.tsx";
-
+﻿import {useState} from "react";
+import {ApiKeyConfigurationEntity} from "../../context/entities/apiKeyConfiguration/apiKeyConfiguration.tsx";
+import getApiKeyConfigurationApi from "../../api/apiKeyConfiguration/getApiKeyConfigurationApi.tsx";
 
 
 const useGetApiKeyConfiguration = () => {
@@ -17,7 +13,7 @@ const useGetApiKeyConfiguration = () => {
         setError(null);
 
         try {
-            const config = await getApiKeyConfiguration();
+            const config = await getApiKeyConfigurationApi();
             setApiConfig(config);
         } catch (error) {
             setError((error as Error).message || "Erro ao buscar configurações");

@@ -2,7 +2,6 @@
 import {configService} from "../hooks/ApiKeyConfiguration/ConfigService.ts";
 
 
-
 let deepSeekInstance: OpenAI | null = null;
 
 export async function getDeepSeekInstance(): Promise<OpenAI> {

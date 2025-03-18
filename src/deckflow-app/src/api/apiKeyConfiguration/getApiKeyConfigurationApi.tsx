@@ -1,10 +1,9 @@
-﻿
-import axiosInstance from "../axiosInstance.tsx";
-import {ApiKeyConfigurationEntity} from "../../context/Entity/ApiKeyConfiguration/ApiKeyConfiguration.tsx";
+﻿import {ApiKeyConfigurationEntity} from "../../context/entities/apiKeyConfiguration/apiKeyConfiguration.tsx";
+import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
 
-export const getApiKeyConfiguration = async (): Promise<ApiKeyConfigurationEntity> => {
+const getApiKeyConfigurationApi = async (): Promise<ApiKeyConfigurationEntity> => {
     try {
-        const response = await axiosInstance.get("api/ApiKeyConfiguration");
+        const response = await axiosInstanceDefault.get("api/ApiKeyConfiguration");
 
         // Verifica se é um objeto
         if (typeof response.data !== 'object' || response.data === null) {
@@ -17,3 +16,4 @@ export const getApiKeyConfiguration = async (): Promise<ApiKeyConfigurationEntit
         throw error; // Mantenha o throw para capturar no hook
     }
 };
+export default getApiKeyConfigurationApi;

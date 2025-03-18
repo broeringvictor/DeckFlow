@@ -1,6 +1,6 @@
-﻿import { useState, useEffect } from "react";
+﻿import {useEffect, useState} from "react";
 import axiosInstanceDefault from "../../api/axiosInstanceDefault.tsx";
-import { Category } from "../../context/Entity/Category/Category";
+import {Category} from "../../context/Entity/Category/Category";
 
 const useGetAllCategory = () => {
     const [categories, setCategories] = useState<Category[]>([]);

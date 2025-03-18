@@ -1,6 +1,5 @@
-﻿
-import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
-import { getFlashCardByIdApi } from "./getFlashCardByIdApi.tsx";
+﻿import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
+import {getFlashCardByIdApi} from "./getFlashCardByIdApi.tsx";
 import {FlashCard} from "../../context/entities/flashCard/flashCard.tsx";
 
 export const updateFlashCardApi = async (flashCard: Partial<FlashCard>): Promise<FlashCard> => {

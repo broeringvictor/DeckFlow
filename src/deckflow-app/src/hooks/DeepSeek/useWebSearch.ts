@@ -1,6 +1,6 @@
-﻿import { useState } from "react";
+﻿import {useState} from "react";
 
-import { getUnsplashInstance } from "../../api/unsplashInstance.ts";
+import {getUnsplashInstance} from "../../api/unsplashInstance.ts";
 import {getDeepSeekInstance} from "../../api/deepSeekInstance.tsx";
 
 const useWebSearch = () => {

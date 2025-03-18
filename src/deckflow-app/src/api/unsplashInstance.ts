@@ -1,4 +1,4 @@
-﻿import { createApi } from 'unsplash-js';
+﻿import {createApi} from 'unsplash-js';
 
 let unsplashInstance: ReturnType<typeof createApi> | null = null;
 

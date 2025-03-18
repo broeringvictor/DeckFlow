@@ -1,11 +1,6 @@
-﻿import { useState } from "react";
-import { Modal, Button } from 'react-bootstrap';
-import {
-    useGetAllCategory,
-    useCreateCategory,
-    useUpdateCategory,
-    useDeleteCategory,
-} from "../../hooks/Category";
+﻿import {useState} from "react";
+import {Button, Modal} from 'react-bootstrap';
+import {useCreateCategory, useDeleteCategory, useGetAllCategory, useUpdateCategory,} from "../../hooks/Category";
 
 import "./CategoryPage.css"; // Arquivo CSS para estilização
 

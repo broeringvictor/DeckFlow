@@ -1,5 +1,5 @@
-﻿import React, { useEffect } from "react";
-import { useForm, SubmitHandler, useWatch } from "react-hook-form";
+﻿import React, {useEffect} from "react";
+import {SubmitHandler, useForm, useWatch} from "react-hook-form";
 import useWebSearch from "../../hooks/DeepSeek/useWebSearch.ts";
 import useIncorrectCreateAnswerDS from "../../hooks/DeepSeek/useIncorrectCreateAnswerDS.ts";
 

@@ -1,7 +1,7 @@
 ﻿import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
-import {Category} from "../../context/Entity/Category/Category.tsx";
-import {CreateCategoryRequest} from "../../context/UseCases/Requests/Category/CreateCategoryRequest.tsx";
 
+import {CreateCategoryRequest} from "../../context/UseCases/Requests/Category/CreateCategoryRequest.tsx";
+import {Category} from "../../context/entities/category/category.tsx";
 
 
 export const createCategory = async (

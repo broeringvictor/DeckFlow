@@ -1,7 +1,8 @@
 ﻿import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
-import { Category } from "../../context/Entity/Category/Category";
-import { UpdateCategoryRequest } from "../../context/UseCases/Requests/Category/UpdateCategoryRequest.tsx";
+
+import {UpdateCategoryRequest} from "../../context/UseCases/Requests/Category/UpdateCategoryRequest.tsx";
 import GetCategoryById from "./getCategoryById.tsx";
+import {Category} from "../../context/entities/category/category.tsx";
 
 export const updateCategory = async (
     data: UpdateCategoryRequest

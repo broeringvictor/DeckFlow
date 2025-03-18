@@ -1,7 +1,6 @@
-﻿import { useState } from "react";
-import { UpdateCategoryRequest } from "../../context/UseCases/Requests/Category/UpdateCategoryRequest";
-import { Category } from "../../context/Entity/Category/Category";
-import updateCategory from "../../api/category/updateCategory.tsx";
+﻿import {useState} from "react";
+import {UpdateCategoryRequest} from "../../context/UseCases/Requests/Category/UpdateCategoryRequest";
+import {Category} from "../../context/Entity/Category/Category";
 
 
 const useUpdateCategory = () => {

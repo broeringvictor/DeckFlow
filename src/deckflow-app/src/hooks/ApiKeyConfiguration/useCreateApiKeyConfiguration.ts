@@ -1,10 +1,11 @@
-﻿import { useState } from "react";
+﻿import {useState} from "react";
+
+import createApiKeyConfigurationApi from "../../api/apiKeyConfiguration/createApiKeyConfigurationApi.tsx";
+import {ApiKeyConfigurationEntity} from "../../context/entities/apiKeyConfiguration/apiKeyConfiguration.tsx";
 import {
     CreateApiKeyConfigurationRequest
-} from "../../context/UseCases/Requests/ApiKeyConfiguration/CreateApiKeyConfigurationRequest.ts";
+} from "../../context/useCases/requests/apiKeyConfiguration/createApiKeyConfigurationRequest.ts";
 
-import { createApiKeyConfiguration } from "../../api/apiKeyConfiguration/createApiKeyConfiguration.tsx";
-import {ApiKeyConfigurationEntity} from "../../context/Entity/ApiKeyConfiguration/ApiKeyConfiguration.tsx";
 
 const useCreateApiKeyConfiguration = () => {
     const [loading, setLoading] = useState<boolean>(false);
@@ -16,7 +17,7 @@ const useCreateApiKeyConfiguration = () => {
         setError(null);
 
         try {
-            const createdConfig = await createApiKeyConfiguration(data);
+            const createdConfig = await createApiKeyConfigurationApi(data);
             setApiKeyConfig(createdConfig);
         } catch (error) {
             const message = (error as Error).message;

@@ -1,7 +1,7 @@
 ﻿// AllFlashCardsPage.tsx
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useFlashCard } from '../../hooks/flashcard';
+import {Link} from 'react-router-dom';
+import {useFlashCard} from '../../hooks/flashcard';
 import './AllFlashCardsPage.css';
 
 const AllFlashCardsPage: React.FC = () => {

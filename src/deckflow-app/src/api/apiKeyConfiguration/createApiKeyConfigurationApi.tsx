@@ -1,11 +1,11 @@
-﻿
-import {
+﻿import {
     CreateApiKeyConfigurationRequest
 } from "../../context/UseCases/Requests/ApiKeyConfiguration/CreateApiKeyConfigurationRequest.ts";
-import axiosInstance from "../axiosInstance.tsx";
-import {ApiKeyConfigurationEntity} from "../../context/Entity/ApiKeyConfiguration/ApiKeyConfiguration.tsx";
+import axiosInstanceDefault from "../axiosInstanceDefault.tsx";
+import {ApiKeyConfigurationEntity} from "../../context/entities/apiKeyConfiguration/apiKeyConfiguration.tsx";
 
-export const createApiKeyConfiguration = async (
+
+const createApiKeyConfigurationApi = async (
     data: CreateApiKeyConfigurationRequest
 ): Promise<ApiKeyConfigurationEntity> => {
     try {
@@ -14,7 +14,7 @@ export const createApiKeyConfiguration = async (
             apiKey: data.apiKey
         };
 
-        const response = await axiosInstance.post(
+        const response = await axiosInstanceDefault.post(
             "/api/ApiKeyConfiguration",
             requestBody
         );
@@ -25,3 +25,4 @@ export const createApiKeyConfiguration = async (
         throw new Error("Erro ao salvar chave. Verifique o endpoint e tente novamente.");
     }
 };
+export default createApiKeyConfigurationApi;

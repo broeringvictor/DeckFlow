@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+﻿import React, {useState} from "react";
 
 interface GetStudyProps {
     onSubmit: (categoryId: number, numberOfCards: number) => void; // Callback ao submeter o formulário

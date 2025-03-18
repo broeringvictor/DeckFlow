@@ -1,5 +1,5 @@
 ﻿import OpenAI from "openai";
-import { configService } from "../hooks/ApiKeyConfiguration/ConfigService.ts";
+import {configService} from "../hooks/ApiKeyConfiguration/ConfigService.ts";
 
 let openAiInstance: OpenAI | null = null;
 

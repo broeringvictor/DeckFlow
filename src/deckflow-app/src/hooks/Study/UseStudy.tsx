@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from "react";
+﻿import {useEffect, useState} from "react";
 import {FlashCard} from "../../context/entities/flashCard/flashCard.tsx";
 
 import {getStudyFlashCards} from "../../api/study/getStudyFlashCards.tsx";

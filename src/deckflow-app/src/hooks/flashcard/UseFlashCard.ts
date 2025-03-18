@@ -1,11 +1,11 @@
 ﻿// useFlashCard.tsx
-import { useState, useEffect, useCallback } from "react";
+import {useCallback, useEffect, useState} from "react";
 import {FlashCard} from "../../context/entities/flashCard/flashCard.tsx";
-import { getAllFlashCardsApi } from "../../api/flashCard/getAllFlashCardsApi.tsx";
-import { createFlashCardApi } from "../../api/flashCard/createFlashCardApi.tsx";
-import { updateFlashCardApi } from "../../api/flashCard/updateFlashCardApi.tsx";
-import { deleteFlashCardApi } from "../../api/flashCard/deleteFlashCardApi.tsx";
-import { getFlashCardByIdApi } from "../../api/flashCard/getFlashCardByIdApi.tsx";
+import {getAllFlashCardsApi} from "../../api/flashCard/getAllFlashCardsApi.tsx";
+import {createFlashCardApi} from "../../api/flashCard/createFlashCardApi.tsx";
+import {updateFlashCardApi} from "../../api/flashCard/updateFlashCardApi.tsx";
+import {deleteFlashCardApi} from "../../api/flashCard/deleteFlashCardApi.tsx";
+import {getFlashCardByIdApi} from "../../api/flashCard/getFlashCardByIdApi.tsx";
 
 interface CreateFlashCardParams {
     question: string;

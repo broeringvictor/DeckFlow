@@ -1,5 +1,5 @@
-﻿import { useState } from "react";
-import { getDeepSeekInstance } from "../../api/deepSeekInstance.tsx";
+﻿import {useState} from "react";
+import {getDeepSeekInstance} from "../../api/deepSeekInstance.tsx";
 
 const useIncorrectCreateAnswerDS = () => {
     const [loading, setLoading] = useState(false);

@@ -1,5 +1,5 @@
-﻿import React, { useState } from "react";
-import { useStudy } from "../../hooks/Study";
+﻿import React, {useState} from "react";
+import {useStudy} from "../../hooks/Study";
 import GetStudy from "../../components/form/GetStudy";
 import FlashCardStepper from "../../components/flashcard/FlashCardStepper";
 import './Study.css';

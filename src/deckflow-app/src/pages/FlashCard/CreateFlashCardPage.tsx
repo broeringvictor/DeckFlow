@@ -1,8 +1,8 @@
 ﻿// CreateFlashcardPage.tsx
-import { useFlashCard } from "../../hooks/flashcard";
-import { SubmitHandler } from "react-hook-form";
-import CreateFlashcardForm, { CreateFlashcardFormData } from "../../components/form/CreateFlashCardForm";
-import { useNavigate } from "react-router-dom";
+import {useFlashCard} from "../../hooks/flashcard";
+import {SubmitHandler} from "react-hook-form";
+import CreateFlashcardForm, {CreateFlashcardFormData} from "../../components/form/CreateFlashCardForm";
+import {useNavigate} from "react-router-dom";
 
 const CreateFlashcardPage = () => {
     const { addFlashCard } = useFlashCard();
