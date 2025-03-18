@@ -3,6 +3,7 @@ using DeckFlow.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+// TODO: `/api/categories`
 namespace DeckFlow.Api.Controllers
 {
     /// <summary>

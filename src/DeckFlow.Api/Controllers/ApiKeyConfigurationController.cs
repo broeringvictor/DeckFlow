@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using DeckFlow.Api.Infrastructure;
 using DeckFlow.Domain.Entities;
 
+// TODO: `/api/configurations`
+
 
 namespace DeckFlow.Api.Controllers
 {
