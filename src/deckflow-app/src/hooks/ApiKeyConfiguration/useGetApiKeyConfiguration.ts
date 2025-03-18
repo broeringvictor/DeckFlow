@@ -1,11 +1,7 @@
-﻿import { useState } from "react";
-import {
-
-    ApiKeyConfigurationEntity
-} from "../../context/Entity/ApiKeyConfiguration/ApiKeyConfiguration.tsx";
-import {GetApiKeyConfiguration} from "../../api/ApiKeyConfiguration/GetApiKeyConfiguration.tsx";
-
-
+﻿// Arquivo: useGetApiKeyConfiguration.ts (atualizado)
+import { useState, useEffect } from "react";
+import { configService } from "./ConfigService";
+import {ApiKeyConfigurationEntity} from "../../context/Entity/ApiKeyConfiguration/ApiKeyConfiguration.tsx";
 
 const useGetApiKeyConfiguration = () => {
     const [loading, setLoading] = useState<boolean>(false);
@@ -17,7 +13,7 @@ const useGetApiKeyConfiguration = () => {
         setError(null);
 
         try {
-            const config = await GetApiKeyConfiguration();
+            const config = await configService.getConfig();
             setApiConfig(config);
         } catch (error) {
             setError((error as Error).message || "Erro ao buscar configurações");
@@ -26,7 +22,11 @@ const useGetApiKeyConfiguration = () => {
         }
     };
 
-    return { getApiKeyConfiguration, loading, error, apiConfig };
+    useEffect(() => {
+        getApiKeyConfiguration();
+    }, []);
+
+    return { loading, error, apiConfig, refresh: getApiKeyConfiguration };
 };
 
 export default useGetApiKeyConfiguration;

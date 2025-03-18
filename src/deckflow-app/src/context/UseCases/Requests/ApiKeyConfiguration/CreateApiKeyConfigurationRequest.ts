@@ -1,4 +1,5 @@
-﻿export interface CreateApiKeyConfigurationRequest {
-    provider: "OpenAI" | "Deepseek",
-    apiKey: string,
+﻿
+export interface CreateApiKeyConfigurationRequest {
+    provider: "OpenAI" | "Deepseek";
+    apiKey: string;
 }

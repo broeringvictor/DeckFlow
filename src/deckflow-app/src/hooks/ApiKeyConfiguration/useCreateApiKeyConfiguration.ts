@@ -1,10 +1,8 @@
 ﻿import { useState } from "react";
-import {
-    CreateApiKeyConfigurationRequest
-} from "../../context/UseCases/Requests/ApiKeyConfiguration/CreateApiKeyConfigurationRequest.ts";
-
+import { CreateApiKeyConfigurationRequest } from "../../context/UseCases/Requests/ApiKeyConfiguration/CreateApiKeyConfigurationRequest.ts";
 import { CreateApiKeyConfiguration } from "../../api/ApiKeyConfiguration/CreateApiKeyConfiguration.tsx";
-import {ApiKeyConfigurationEntity} from "../../context/Entity/ApiKeyConfiguration/ApiKeyConfiguration.tsx";
+import { ApiKeyConfigurationEntity } from "../../context/Entity/ApiKeyConfiguration/ApiKeyConfiguration.tsx";
+import { configService } from "./ConfigService";
 
 const useCreateApiKeyConfiguration = () => {
     const [loading, setLoading] = useState<boolean>(false);
@@ -18,6 +16,10 @@ const useCreateApiKeyConfiguration = () => {
         try {
             const createdConfig = await CreateApiKeyConfiguration(data);
             setApiKeyConfig(createdConfig);
+
+            // Invalidar o cache após criação bem-sucedida
+            configService.invalidateCache();
+
         } catch (error) {
             const message = (error as Error).message;
             setError(message || "Erro ao criar configuração de API");
@@ -28,4 +30,5 @@ const useCreateApiKeyConfiguration = () => {
 
     return { createApiKeyConfiguration, loading, error, apiKeyConfig };
 };
+
 export default useCreateApiKeyConfiguration;

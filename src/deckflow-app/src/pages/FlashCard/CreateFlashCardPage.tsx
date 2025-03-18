@@ -12,7 +12,8 @@ const CreateFlashcardPage = () => {
         try {
             await addFlashCard({
                 ...formData,
-                cardImage: formData.cardImage || null // Correção na sintaxe
+                cardImage: formData.cardImage || undefined
+                //
             });
 
             alert("FlashCard criado com sucesso!");

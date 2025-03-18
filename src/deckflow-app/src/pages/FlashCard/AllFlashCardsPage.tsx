@@ -36,6 +36,8 @@ const AllFlashCardsPage: React.FC = () => {
                     <tr>
                         <th>Question</th>
                         <th>Answer</th>
+                        <th>Rating</th>
+                        <th>Update</th>
                         <th>Category</th>
                         <th>Image</th>
                         <th>Ações</th>
@@ -46,6 +48,8 @@ const AllFlashCardsPage: React.FC = () => {
                         <tr key={card.id}>
                             <td>{card.question}</td>
                             <td>{card.answer}</td>
+                            <td>{card.rating}</td>
+                            <td>{card.lastUpdateDate.toLocaleDateString()} </td>
                             <td>{card.categoryId}</td>
                             <td>{card.cardImage && <img className="card-img" src={card.cardImage} alt="Card Image" />}</td>
                             <td>

@@ -5,21 +5,20 @@ import {
     useGetApiKeyConfiguration
 } from "../../hooks/ApiKeyConfiguration";
 import "./CategoryPage.css";
+import { CreateApiKeyConfigurationRequest } from "../../context/UseCases/Requests/ApiKeyConfiguration/CreateApiKeyConfigurationRequest";
 
 const ConfigurationPage = () => {
-    // Estados
     const [showModal, setShowModal] = useState(false);
     const [form, setForm] = useState<{
-        provider: "OpenAI" | "Deepseek"; // Ajustando o tipo literal aqui
+        provider: "OpenAI" | "Deepseek";
         apiKey: string;
     }>({
-        provider: "OpenAI", // Valor padrão inicial
+        provider: "OpenAI",
         apiKey: "",
     });
 
-    // Hooks
     const {
-        getApiKeyConfiguration,
+        refresh: getApiKeyConfiguration,
         loading: loadingKeys,
         error: errorKeys,
         apiConfig
@@ -31,21 +30,26 @@ const ConfigurationPage = () => {
         error: errorCreating
     } = useCreateApiKeyConfiguration();
 
-    // Carregar configurações inicialmente
     useEffect(() => {
         getApiKeyConfiguration();
-    }, []);
+    }, [getApiKeyConfiguration]);
 
     const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            await createApiKeyConfiguration(form);
-            await getApiKeyConfiguration();
+            const payload: CreateApiKeyConfigurationRequest = {
+
+                    provider: form.provider,
+                    apiKey: form.apiKey
+            };
+
+            await createApiKeyConfiguration(payload);
             resetForm();
         } catch (error) {
             console.error("Falha ao criar chave API:", error);
         }
     };
+
 
     const resetForm = () => {
         setForm({ provider: "OpenAI", apiKey: "" });
@@ -98,7 +102,10 @@ const ConfigurationPage = () => {
                             <select
                                 className="form-control"
                                 value={form.provider}
-                                onChange={(e) => setForm({ ...form, provider: e.target.value as "OpenAI" | "Deepseek" })}
+                                onChange={(e) => setForm({
+                                    ...form,
+                                    provider: e.target.value as "OpenAI" | "Deepseek"
+                                })}
                                 required
                             >
                                 <option value="OpenAI">OpenAI</option>
@@ -109,7 +116,7 @@ const ConfigurationPage = () => {
                         <div className="mb-3">
                             <Form.Label>Chave API:</Form.Label>
                             <Form.Control
-                                type="text"
+                                type="password"
                                 value={form.apiKey}
                                 onChange={(e) => setForm({...form, apiKey: e.target.value})}
                                 required
