@@ -3,33 +3,28 @@ using Microsoft.EntityFrameworkCore;
 using DeckFlow.Api.Infrastructure;
 using DeckFlow.Domain.Entities;
 
+// DONE: `/api/configurations`
+
 
 namespace DeckFlow.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("/api/configurations")]
     [ApiController]
-    public class ApiKeyConfigurationController : ControllerBase
+    public class ApiKeyConfigurationController(AppDbContext context) : ControllerBase
     {
-        private readonly AppDbContext _context;
-
-        public ApiKeyConfigurationController(AppDbContext context)
-        {
-            _context = context;
-        }
-
-// GET: api/ApiKeyConfiguration
+        // GET: api/ApiKeyConfiguration
         [HttpGet]
-        public async Task<ActionResult<object>> GetApiKeyConfiguration()
+        public async Task<ActionResult<object>> GetConfiguration()
         {
             // Busca a chave OpenAI mais recente, se existir
-            var openAiKey = await _context.ApiKeysConfiguration
+            var openAiKey = await context.ApiKeysConfiguration
                 .Where(x => !string.IsNullOrEmpty(x.OpenAiApiKey))
                 .OrderByDescending(x => x.LastUpdated)
                 .Select(x => new { x.OpenAiApiKey, x.LastUpdated })
                 .FirstOrDefaultAsync();
 
             // Busca a chave Deepseek mais recente, se existir
-            var deepseekKey = await _context.ApiKeysConfiguration
+            var deepseekKey = await context.ApiKeysConfiguration
                 .Where(x => !string.IsNullOrEmpty(x.DeepseekApiKey))
                 .OrderByDescending(x => x.LastUpdated)
                 .Select(x => new { x.DeepseekApiKey, x.LastUpdated })
@@ -53,18 +48,18 @@ namespace DeckFlow.Api.Controllers
 
         // POST: api/ApiKeyConfiguration
         [HttpPost]
-        public async Task<ActionResult<ApiKeyConfiguration>> PostApiKeyConfiguration([FromBody] ApiKeyUpdateDto dto)
+        public async Task<ActionResult<ApiKeyConfiguration>> PostConfiguration([FromBody] ApiKeyUpdateDto dto)
         {
             if (dto.Provider.ToLower() != "openai" && dto.Provider.ToLower() != "deepseek")
                 return BadRequest("O provedor deve ser 'OpenAI' ou 'Deepseek'.");
 
-            var config = await _context.ApiKeysConfiguration.FirstOrDefaultAsync();
+            var config = await context.ApiKeysConfiguration.FirstOrDefaultAsync();
 
             if (config == null)
             {
                 // Criando novo registro caso não exista
                 config = new ApiKeyConfiguration();
-                _context.ApiKeysConfiguration.Add(config);
+                context.ApiKeysConfiguration.Add(config);
             }
 
             // Atualizando a chave correta
@@ -74,19 +69,19 @@ namespace DeckFlow.Api.Controllers
                 config.DeepseekApiKey = dto.ApiKey;
 
             config.LastUpdated = DateTime.UtcNow;
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetApiKeyConfiguration), new { id = config.Id }, config);
+            return CreatedAtAction(nameof(GetConfiguration), new { id = config.Id }, config);
         }
 
         // PUT: api/ApiKeyConfiguration
         [HttpPut]
-        public async Task<IActionResult> PutApiKeyConfiguration([FromBody] ApiKeyUpdateDto dto)
+        public async Task<IActionResult> PutConfiguration([FromBody] ApiKeyUpdateDto dto)
         {
             if (dto.Provider.ToLower() != "openai" && dto.Provider.ToLower() != "deepseek")
                 return BadRequest("O provedor deve ser 'OpenAI' ou 'Deepseek'.");
 
-            var config = await _context.ApiKeysConfiguration.FirstOrDefaultAsync();
+            var config = await context.ApiKeysConfiguration.FirstOrDefaultAsync();
             if (config == null)
                 return NotFound("Nenhuma configuração de API encontrada.");
 
@@ -97,16 +92,16 @@ namespace DeckFlow.Api.Controllers
                 config.DeepseekApiKey = dto.ApiKey;
 
             config.LastUpdated = DateTime.UtcNow;
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
 
             return NoContent();
         }
 
         // DELETE: api/ApiKeyConfiguration/OpenAI ou api/ApiKeyConfiguration/Deepseek
         [HttpDelete("{provider}")]
-        public async Task<IActionResult> DeleteApiKeyConfiguration(string provider)
+        public async Task<IActionResult> DeleteConfiguration(string provider)
         {
-            var config = await _context.ApiKeysConfiguration.FirstOrDefaultAsync();
+            var config = await context.ApiKeysConfiguration.FirstOrDefaultAsync();
             if (config == null)
                 return NotFound("Nenhuma configuração de API encontrada.");
 
@@ -118,7 +113,7 @@ namespace DeckFlow.Api.Controllers
                 return BadRequest("O provedor deve ser 'OpenAI' ou 'Deepseek'.");
 
             config.LastUpdated = DateTime.UtcNow;
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
 
             return NoContent();
         }

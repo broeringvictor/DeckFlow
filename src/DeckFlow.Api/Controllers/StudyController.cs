@@ -2,11 +2,11 @@
 using DeckFlow.Domain.UseCases.Study;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+// DONE: `/api/studies`
 namespace DeckFlow.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/studies")]
     public class StudyController : ControllerBase
     {
         private readonly  AppDbContext _context;
@@ -22,7 +22,7 @@ namespace DeckFlow.Api.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost("GetFlashCards")]
+        [HttpPost("flashcards")]
         public async Task<IActionResult> GetFlashCards([FromBody] Request request)
         {
             // Consulta base
@@ -93,8 +93,8 @@ namespace DeckFlow.Api.Controllers
         /// <param name="flashCardId"></param>
         /// <param name="correct"></param>
         /// <returns></returns>
-        [HttpPost("Answer")]
-        public async Task<IActionResult> AnswerFlashCard(long flashCardId, bool correct)
+        [HttpPost("answers")]
+        public async Task<IActionResult> AnswersRatingFlashCard(long flashCardId, bool correct)
         {
             var flashCard = await _context.FlashCards.FindAsync(flashCardId);
             if (flashCard == null)
