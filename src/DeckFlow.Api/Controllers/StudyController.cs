@@ -2,7 +2,7 @@
 using DeckFlow.Domain.UseCases.Study;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-// TODO: `/api/studies`
+// DONE: `/api/studies`
 namespace DeckFlow.Api.Controllers
 {
     [ApiController]
