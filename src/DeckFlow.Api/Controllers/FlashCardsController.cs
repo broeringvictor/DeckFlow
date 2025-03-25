@@ -3,13 +3,13 @@ using DeckFlow.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-// TODO: `/api/flashcards`
+// DONE: `/api/flashcards`
 namespace DeckFlow.Api.Controllers
 {
     /// <summary>
     /// Controller para gerenciamento de flashcards.
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/flashcards")]
     [ApiController]
     public class FlashCardsController(AppDbContext context) : ControllerBase
     {

@@ -3,13 +3,13 @@ using DeckFlow.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-// TODO: `/api/categories`
+// DONE: `/api/categories`
 namespace DeckFlow.Api.Controllers
 {
     /// <summary>
     /// Controller para gerenciamento de categorias.
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("/api/categories")]
     [ApiController]
     public class CategoriesController : ControllerBase
     {
